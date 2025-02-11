@@ -7,7 +7,7 @@ part of 'game_search_intent.dart';
 // **************************************************************************
 
 String _$gameSearchIntentFactoryHash() =>
-    r'f305522df0bc9bae4e4c7b13875d144767c2ebf0';
+    r'f34f12d10f49511a5f41f231fcb255d8f04afd34';
 
 /// See also [GameSearchIntentFactory].
 @ProviderFor(GameSearchIntentFactory)

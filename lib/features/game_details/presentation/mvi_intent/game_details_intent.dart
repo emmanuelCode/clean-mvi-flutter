@@ -12,7 +12,7 @@ class GameDetailsIntentFactory extends _$GameDetailsIntentFactory {
   @override
   GameDetailsEntity build() {
     return GameDetailsEntity(
-      id: '',
+      id: 0,
       name: '',
       nameOriginal: '',
       description: '',

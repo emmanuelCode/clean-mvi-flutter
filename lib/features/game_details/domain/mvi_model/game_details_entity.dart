@@ -10,12 +10,12 @@ part 'game_details_entity.g.dart';
 @freezed
 class GameDetailsEntity with _$GameDetailsEntity {
   const factory GameDetailsEntity({
-    required String id,
+    required int id,
     required String name,
-    required String nameOriginal,
-    required String description,
-    required String released,
-    required List<ScreenShot> screenShots,
+    required String? nameOriginal,
+    required String? description,
+    required String? released,
+    required List<ScreenShot>? screenShots,
   }) = _GameDetailsEntity;
 
   factory GameDetailsEntity.fromJson(Map<String, Object?> json) =>

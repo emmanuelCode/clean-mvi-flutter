@@ -9,13 +9,13 @@ part of 'game_details_entity.dart';
 _$GameDetailsEntityImpl _$$GameDetailsEntityImplFromJson(
         Map<String, dynamic> json) =>
     _$GameDetailsEntityImpl(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
-      nameOriginal: json['nameOriginal'] as String,
-      description: json['description'] as String,
-      released: json['released'] as String,
-      screenShots: (json['screenShots'] as List<dynamic>)
-          .map((e) => ScreenShot.fromJson(e as Map<String, dynamic>))
+      nameOriginal: json['nameOriginal'] as String?,
+      description: json['description'] as String?,
+      released: json['released'] as String?,
+      screenShots: (json['screenShots'] as List<dynamic>?)
+          ?.map((e) => ScreenShot.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

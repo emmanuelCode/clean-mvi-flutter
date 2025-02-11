@@ -11,10 +11,10 @@ part 'game_list_entity.g.dart';
 @freezed
 class GameListEntity with _$GameListEntity {
   const factory GameListEntity({
-    required List<GameDetailsEntity> gameListEntity,
+    required List<GameDetailsEntity> gameList,
     required int count,//total game results
     // if null means no more pages
-    required int? next, previous, // represent page from the api
+    required String? next, previous, // represent page from the api
   }) = _GameListEntity;
 
   factory GameListEntity.fromJson(Map<String, Object?> json) =>

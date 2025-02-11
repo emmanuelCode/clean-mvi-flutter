@@ -20,11 +20,10 @@ GameListEntity _$GameListEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GameListEntity {
-  List<GameDetailsEntity> get gameListEntity =>
-      throw _privateConstructorUsedError;
+  List<GameDetailsEntity> get gameList => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError; //total game results
 // if null means no more pages
-  int? get next => throw _privateConstructorUsedError;
+  String? get next => throw _privateConstructorUsedError;
   dynamic get previous => throw _privateConstructorUsedError;
 
   /// Serializes this GameListEntity to a JSON map.
@@ -44,9 +43,9 @@ abstract class $GameListEntityCopyWith<$Res> {
       _$GameListEntityCopyWithImpl<$Res, GameListEntity>;
   @useResult
   $Res call(
-      {List<GameDetailsEntity> gameListEntity,
+      {List<GameDetailsEntity> gameList,
       int count,
-      int? next,
+      String? next,
       dynamic previous});
 }
 
@@ -65,15 +64,15 @@ class _$GameListEntityCopyWithImpl<$Res, $Val extends GameListEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gameListEntity = null,
+    Object? gameList = null,
     Object? count = null,
     Object? next = freezed,
     Object? previous = freezed,
   }) {
     return _then(_value.copyWith(
-      gameListEntity: null == gameListEntity
-          ? _value.gameListEntity
-          : gameListEntity // ignore: cast_nullable_to_non_nullable
+      gameList: null == gameList
+          ? _value.gameList
+          : gameList // ignore: cast_nullable_to_non_nullable
               as List<GameDetailsEntity>,
       count: null == count
           ? _value.count
@@ -82,7 +81,7 @@ class _$GameListEntityCopyWithImpl<$Res, $Val extends GameListEntity>
       next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       previous: freezed == previous
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
@@ -100,9 +99,9 @@ abstract class _$$GameListEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<GameDetailsEntity> gameListEntity,
+      {List<GameDetailsEntity> gameList,
       int count,
-      int? next,
+      String? next,
       dynamic previous});
 }
 
@@ -119,15 +118,15 @@ class __$$GameListEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gameListEntity = null,
+    Object? gameList = null,
     Object? count = null,
     Object? next = freezed,
     Object? previous = freezed,
   }) {
     return _then(_$GameListEntityImpl(
-      gameListEntity: null == gameListEntity
-          ? _value._gameListEntity
-          : gameListEntity // ignore: cast_nullable_to_non_nullable
+      gameList: null == gameList
+          ? _value._gameList
+          : gameList // ignore: cast_nullable_to_non_nullable
               as List<GameDetailsEntity>,
       count: null == count
           ? _value.count
@@ -136,7 +135,7 @@ class __$$GameListEntityImplCopyWithImpl<$Res>
       next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       previous: freezed == previous ? _value.previous! : previous,
     ));
   }
@@ -146,21 +145,21 @@ class __$$GameListEntityImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GameListEntityImpl implements _GameListEntity {
   const _$GameListEntityImpl(
-      {required final List<GameDetailsEntity> gameListEntity,
+      {required final List<GameDetailsEntity> gameList,
       required this.count,
       required this.next,
       this.previous})
-      : _gameListEntity = gameListEntity;
+      : _gameList = gameList;
 
   factory _$GameListEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$GameListEntityImplFromJson(json);
 
-  final List<GameDetailsEntity> _gameListEntity;
+  final List<GameDetailsEntity> _gameList;
   @override
-  List<GameDetailsEntity> get gameListEntity {
-    if (_gameListEntity is EqualUnmodifiableListView) return _gameListEntity;
+  List<GameDetailsEntity> get gameList {
+    if (_gameList is EqualUnmodifiableListView) return _gameList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_gameListEntity);
+    return EqualUnmodifiableListView(_gameList);
   }
 
   @override
@@ -168,13 +167,13 @@ class _$GameListEntityImpl implements _GameListEntity {
 //total game results
 // if null means no more pages
   @override
-  final int? next;
+  final String? next;
   @override
   final dynamic previous;
 
   @override
   String toString() {
-    return 'GameListEntity(gameListEntity: $gameListEntity, count: $count, next: $next, previous: $previous)';
+    return 'GameListEntity(gameList: $gameList, count: $count, next: $next, previous: $previous)';
   }
 
   @override
@@ -182,8 +181,7 @@ class _$GameListEntityImpl implements _GameListEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GameListEntityImpl &&
-            const DeepCollectionEquality()
-                .equals(other._gameListEntity, _gameListEntity) &&
+            const DeepCollectionEquality().equals(other._gameList, _gameList) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.next, next) || other.next == next) &&
             const DeepCollectionEquality().equals(other.previous, previous));
@@ -193,7 +191,7 @@ class _$GameListEntityImpl implements _GameListEntity {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_gameListEntity),
+      const DeepCollectionEquality().hash(_gameList),
       count,
       next,
       const DeepCollectionEquality().hash(previous));
@@ -217,21 +215,21 @@ class _$GameListEntityImpl implements _GameListEntity {
 
 abstract class _GameListEntity implements GameListEntity {
   const factory _GameListEntity(
-      {required final List<GameDetailsEntity> gameListEntity,
+      {required final List<GameDetailsEntity> gameList,
       required final int count,
-      required final int? next,
+      required final String? next,
       final dynamic previous}) = _$GameListEntityImpl;
 
   factory _GameListEntity.fromJson(Map<String, dynamic> json) =
       _$GameListEntityImpl.fromJson;
 
   @override
-  List<GameDetailsEntity> get gameListEntity;
+  List<GameDetailsEntity> get gameList;
   @override
   int get count; //total game results
 // if null means no more pages
   @override
-  int? get next;
+  String? get next;
   @override
   dynamic get previous;
 

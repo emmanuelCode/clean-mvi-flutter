@@ -20,12 +20,12 @@ GameDetailsEntity _$GameDetailsEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GameDetailsEntity {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get nameOriginal => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  String get released => throw _privateConstructorUsedError;
-  List<ScreenShot> get screenShots => throw _privateConstructorUsedError;
+  String? get nameOriginal => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get released => throw _privateConstructorUsedError;
+  List<ScreenShot>? get screenShots => throw _privateConstructorUsedError;
 
   /// Serializes this GameDetailsEntity to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,12 +44,12 @@ abstract class $GameDetailsEntityCopyWith<$Res> {
       _$GameDetailsEntityCopyWithImpl<$Res, GameDetailsEntity>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String name,
-      String nameOriginal,
-      String description,
-      String released,
-      List<ScreenShot> screenShots});
+      String? nameOriginal,
+      String? description,
+      String? released,
+      List<ScreenShot>? screenShots});
 }
 
 /// @nodoc
@@ -69,36 +69,36 @@ class _$GameDetailsEntityCopyWithImpl<$Res, $Val extends GameDetailsEntity>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? nameOriginal = null,
-    Object? description = null,
-    Object? released = null,
-    Object? screenShots = null,
+    Object? nameOriginal = freezed,
+    Object? description = freezed,
+    Object? released = freezed,
+    Object? screenShots = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      nameOriginal: null == nameOriginal
+      nameOriginal: freezed == nameOriginal
           ? _value.nameOriginal
           : nameOriginal // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      released: null == released
+              as String?,
+      released: freezed == released
           ? _value.released
           : released // ignore: cast_nullable_to_non_nullable
-              as String,
-      screenShots: null == screenShots
+              as String?,
+      screenShots: freezed == screenShots
           ? _value.screenShots
           : screenShots // ignore: cast_nullable_to_non_nullable
-              as List<ScreenShot>,
+              as List<ScreenShot>?,
     ) as $Val);
   }
 }
@@ -112,12 +112,12 @@ abstract class _$$GameDetailsEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String name,
-      String nameOriginal,
-      String description,
-      String released,
-      List<ScreenShot> screenShots});
+      String? nameOriginal,
+      String? description,
+      String? released,
+      List<ScreenShot>? screenShots});
 }
 
 /// @nodoc
@@ -135,36 +135,36 @@ class __$$GameDetailsEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? nameOriginal = null,
-    Object? description = null,
-    Object? released = null,
-    Object? screenShots = null,
+    Object? nameOriginal = freezed,
+    Object? description = freezed,
+    Object? released = freezed,
+    Object? screenShots = freezed,
   }) {
     return _then(_$GameDetailsEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      nameOriginal: null == nameOriginal
+      nameOriginal: freezed == nameOriginal
           ? _value.nameOriginal
           : nameOriginal // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      released: null == released
+              as String?,
+      released: freezed == released
           ? _value.released
           : released // ignore: cast_nullable_to_non_nullable
-              as String,
-      screenShots: null == screenShots
+              as String?,
+      screenShots: freezed == screenShots
           ? _value._screenShots
           : screenShots // ignore: cast_nullable_to_non_nullable
-              as List<ScreenShot>,
+              as List<ScreenShot>?,
     ));
   }
 }
@@ -180,28 +180,30 @@ class _$GameDetailsEntityImpl
       required this.nameOriginal,
       required this.description,
       required this.released,
-      required final List<ScreenShot> screenShots})
+      required final List<ScreenShot>? screenShots})
       : _screenShots = screenShots;
 
   factory _$GameDetailsEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$GameDetailsEntityImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String name;
   @override
-  final String nameOriginal;
+  final String? nameOriginal;
   @override
-  final String description;
+  final String? description;
   @override
-  final String released;
-  final List<ScreenShot> _screenShots;
+  final String? released;
+  final List<ScreenShot>? _screenShots;
   @override
-  List<ScreenShot> get screenShots {
+  List<ScreenShot>? get screenShots {
+    final value = _screenShots;
+    if (value == null) return null;
     if (_screenShots is EqualUnmodifiableListView) return _screenShots;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_screenShots);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -263,28 +265,28 @@ class _$GameDetailsEntityImpl
 
 abstract class _GameDetailsEntity implements GameDetailsEntity {
   const factory _GameDetailsEntity(
-      {required final String id,
+      {required final int id,
       required final String name,
-      required final String nameOriginal,
-      required final String description,
-      required final String released,
-      required final List<ScreenShot> screenShots}) = _$GameDetailsEntityImpl;
+      required final String? nameOriginal,
+      required final String? description,
+      required final String? released,
+      required final List<ScreenShot>? screenShots}) = _$GameDetailsEntityImpl;
 
   factory _GameDetailsEntity.fromJson(Map<String, dynamic> json) =
       _$GameDetailsEntityImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get name;
   @override
-  String get nameOriginal;
+  String? get nameOriginal;
   @override
-  String get description;
+  String? get description;
   @override
-  String get released;
+  String? get released;
   @override
-  List<ScreenShot> get screenShots;
+  List<ScreenShot>? get screenShots;
 
   /// Create a copy of GameDetailsEntity
   /// with the given fields replaced by the non-null parameter values.
