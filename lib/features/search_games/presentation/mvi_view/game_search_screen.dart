@@ -38,13 +38,14 @@ class SearchGamesScreen extends ConsumerWidget {
               ),
             ],
           ),
-       
           Expanded(
             child: GridView.builder(
-              //shrinkWrap: ,
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-              itemBuilder: (context, index) => Text(state.gameList[index].name),
+              itemBuilder: (context, index) => GameWidget(
+                title: state.gameList[index].name,
+                imageUrl: state.gameList[index].screenShots?[0].image ?? '',
+              ),
               itemCount: state.gameList.length,
             ),
           ),
@@ -55,9 +56,39 @@ class SearchGamesScreen extends ConsumerWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () {
+          debugPrint('Game: ${state.gameList[0].screenShots![0].image }');
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class GameWidget extends ConsumerWidget {
+  final String title;
+  final String imageUrl;
+  const GameWidget({
+    required this.title,
+    required this.imageUrl,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    var action = ref.read(gameSearchIntentFactoryProvider.notifier);
+    return Card(
+      child: InkWell(
+        onTap: () => action.toIntent(SelectGame(context: context)),
+        child: Column(
+          children: [
+            Image.network(imageUrl),
+            ListTile(
+              title: Text(title),
+            ),
+          ],
+        ),
       ),
     );
   }

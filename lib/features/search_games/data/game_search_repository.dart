@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_clean_architecture_with_mvi/features/search_games/domain/mvi_model/game_list_entity.dart';
 import 'package:http/http.dart' as http;
 
@@ -48,6 +49,8 @@ class Search extends GameSearchRepository {
         .then((response) {
       if (response.statusCode == 200) {
         var result = jsonDecode(response.body);
+
+        debugPrint('GameListEntity: ${result['results']}');
 
         return GameListEntity.fromJson(
           {

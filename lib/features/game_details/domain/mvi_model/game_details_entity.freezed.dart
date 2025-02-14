@@ -25,6 +25,7 @@ mixin _$GameDetailsEntity {
   String? get nameOriginal => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get released => throw _privateConstructorUsedError;
+  @JsonKey(name: 'short_screenshots')
   List<ScreenShot>? get screenShots => throw _privateConstructorUsedError;
 
   /// Serializes this GameDetailsEntity to a JSON map.
@@ -49,7 +50,7 @@ abstract class $GameDetailsEntityCopyWith<$Res> {
       String? nameOriginal,
       String? description,
       String? released,
-      List<ScreenShot>? screenShots});
+      @JsonKey(name: 'short_screenshots') List<ScreenShot>? screenShots});
 }
 
 /// @nodoc
@@ -117,7 +118,7 @@ abstract class _$$GameDetailsEntityImplCopyWith<$Res>
       String? nameOriginal,
       String? description,
       String? released,
-      List<ScreenShot>? screenShots});
+      @JsonKey(name: 'short_screenshots') List<ScreenShot>? screenShots});
 }
 
 /// @nodoc
@@ -180,6 +181,7 @@ class _$GameDetailsEntityImpl
       required this.nameOriginal,
       required this.description,
       required this.released,
+      @JsonKey(name: 'short_screenshots')
       required final List<ScreenShot>? screenShots})
       : _screenShots = screenShots;
 
@@ -198,6 +200,7 @@ class _$GameDetailsEntityImpl
   final String? released;
   final List<ScreenShot>? _screenShots;
   @override
+  @JsonKey(name: 'short_screenshots')
   List<ScreenShot>? get screenShots {
     final value = _screenShots;
     if (value == null) return null;
@@ -270,6 +273,7 @@ abstract class _GameDetailsEntity implements GameDetailsEntity {
       required final String? nameOriginal,
       required final String? description,
       required final String? released,
+      @JsonKey(name: 'short_screenshots')
       required final List<ScreenShot>? screenShots}) = _$GameDetailsEntityImpl;
 
   factory _GameDetailsEntity.fromJson(Map<String, dynamic> json) =
@@ -286,6 +290,7 @@ abstract class _GameDetailsEntity implements GameDetailsEntity {
   @override
   String? get released;
   @override
+  @JsonKey(name: 'short_screenshots')
   List<ScreenShot>? get screenShots;
 
   /// Create a copy of GameDetailsEntity
@@ -302,7 +307,7 @@ ScreenShot _$ScreenShotFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ScreenShot {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
 
   /// Serializes this ScreenShot to a JSON map.
@@ -321,7 +326,7 @@ abstract class $ScreenShotCopyWith<$Res> {
           ScreenShot value, $Res Function(ScreenShot) then) =
       _$ScreenShotCopyWithImpl<$Res, ScreenShot>;
   @useResult
-  $Res call({String id, String image});
+  $Res call({int id, String image});
 }
 
 /// @nodoc
@@ -346,7 +351,7 @@ class _$ScreenShotCopyWithImpl<$Res, $Val extends ScreenShot>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -363,7 +368,7 @@ abstract class _$$ScreenShotImplCopyWith<$Res>
       __$$ScreenShotImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String image});
+  $Res call({int id, String image});
 }
 
 /// @nodoc
@@ -386,7 +391,7 @@ class __$$ScreenShotImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -404,7 +409,7 @@ class _$ScreenShotImpl with DiagnosticableTreeMixin implements _ScreenShot {
       _$$ScreenShotImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String image;
 
@@ -453,14 +458,13 @@ class _$ScreenShotImpl with DiagnosticableTreeMixin implements _ScreenShot {
 
 abstract class _ScreenShot implements ScreenShot {
   const factory _ScreenShot(
-      {required final String id,
-      required final String image}) = _$ScreenShotImpl;
+      {required final int id, required final String image}) = _$ScreenShotImpl;
 
   factory _ScreenShot.fromJson(Map<String, dynamic> json) =
       _$ScreenShotImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get image;
 

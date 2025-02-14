@@ -14,7 +14,7 @@ _$GameDetailsEntityImpl _$$GameDetailsEntityImplFromJson(
       nameOriginal: json['nameOriginal'] as String?,
       description: json['description'] as String?,
       released: json['released'] as String?,
-      screenShots: (json['screenShots'] as List<dynamic>?)
+      screenShots: (json['short_screenshots'] as List<dynamic>?)
           ?.map((e) => ScreenShot.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -27,12 +27,12 @@ Map<String, dynamic> _$$GameDetailsEntityImplToJson(
       'nameOriginal': instance.nameOriginal,
       'description': instance.description,
       'released': instance.released,
-      'screenShots': instance.screenShots,
+      'short_screenshots': instance.screenShots,
     };
 
 _$ScreenShotImpl _$$ScreenShotImplFromJson(Map<String, dynamic> json) =>
     _$ScreenShotImpl(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       image: json['image'] as String,
     );
 

@@ -15,7 +15,7 @@ class GameDetailsEntity with _$GameDetailsEntity {
     required String? nameOriginal,
     required String? description,
     required String? released,
-    required List<ScreenShot>? screenShots,
+    @JsonKey(name: 'short_screenshots') required List<ScreenShot>? screenShots,
   }) = _GameDetailsEntity;
 
   factory GameDetailsEntity.fromJson(Map<String, Object?> json) =>
@@ -24,9 +24,8 @@ class GameDetailsEntity with _$GameDetailsEntity {
 
 @freezed
 class ScreenShot with _$ScreenShot {
-  //short_screenshots in api
   const factory ScreenShot({
-    required String id,
+    required int id,
     required String image,
   }) = _ScreenShot;
 
