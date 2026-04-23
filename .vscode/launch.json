@@ -1,0 +1,27 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "clean-mvi-flutter",
+            "request": "launch",
+            "type": "dart",
+            //use ctrl+F5 to run the key from vscode, otherwise the key will not be passed to the app
+            "args": ["--dart-define-from-file=env/key.json"]
+        },
+        {
+            "name": "clean-mvi-flutter (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "clean-mvi-flutter (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
