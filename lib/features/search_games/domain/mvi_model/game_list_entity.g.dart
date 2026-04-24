@@ -6,8 +6,8 @@ part of 'game_list_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GameListEntityImpl _$$GameListEntityImplFromJson(Map<String, dynamic> json) =>
-    _$GameListEntityImpl(
+_GameListEntity _$GameListEntityFromJson(Map<String, dynamic> json) =>
+    _GameListEntity(
       gameList: (json['gameList'] as List<dynamic>)
           .map((e) => GameDetailsEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -16,8 +16,7 @@ _$GameListEntityImpl _$$GameListEntityImplFromJson(Map<String, dynamic> json) =>
       previous: json['previous'],
     );
 
-Map<String, dynamic> _$$GameListEntityImplToJson(
-        _$GameListEntityImpl instance) =>
+Map<String, dynamic> _$GameListEntityToJson(_GameListEntity instance) =>
     <String, dynamic>{
       'gameList': instance.gameList,
       'count': instance.count,

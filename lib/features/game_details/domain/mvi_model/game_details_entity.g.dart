@@ -6,9 +6,8 @@ part of 'game_details_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GameDetailsEntityImpl _$$GameDetailsEntityImplFromJson(
-        Map<String, dynamic> json) =>
-    _$GameDetailsEntityImpl(
+_GameDetailsEntity _$GameDetailsEntityFromJson(Map<String, dynamic> json) =>
+    _GameDetailsEntity(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       nameOriginal: json['nameOriginal'] as String?,
@@ -19,8 +18,7 @@ _$GameDetailsEntityImpl _$$GameDetailsEntityImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$GameDetailsEntityImplToJson(
-        _$GameDetailsEntityImpl instance) =>
+Map<String, dynamic> _$GameDetailsEntityToJson(_GameDetailsEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -30,14 +28,10 @@ Map<String, dynamic> _$$GameDetailsEntityImplToJson(
       'short_screenshots': instance.screenShots,
     };
 
-_$ScreenShotImpl _$$ScreenShotImplFromJson(Map<String, dynamic> json) =>
-    _$ScreenShotImpl(
-      id: (json['id'] as num).toInt(),
-      image: json['image'] as String,
-    );
+_ScreenShot _$ScreenShotFromJson(Map<String, dynamic> json) => _ScreenShot(
+  id: (json['id'] as num).toInt(),
+  image: json['image'] as String,
+);
 
-Map<String, dynamic> _$$ScreenShotImplToJson(_$ScreenShotImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'image': instance.image,
-    };
+Map<String, dynamic> _$ScreenShotToJson(_ScreenShot instance) =>
+    <String, dynamic>{'id': instance.id, 'image': instance.image};

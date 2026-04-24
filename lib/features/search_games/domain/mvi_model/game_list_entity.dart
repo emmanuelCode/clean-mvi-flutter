@@ -9,7 +9,7 @@ part 'game_list_entity.g.dart';
 
 // this is the model from the MVI "M"
 @freezed
-class GameListEntity with _$GameListEntity {
+abstract class GameListEntity with _$GameListEntity {
   const factory GameListEntity({
     required List<GameDetailsEntity> gameList,
     required int count,//total game results

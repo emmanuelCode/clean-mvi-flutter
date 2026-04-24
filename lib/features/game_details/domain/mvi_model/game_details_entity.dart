@@ -8,7 +8,7 @@ part 'game_details_entity.g.dart';
 
 // this is the model from the MVI "M"
 @freezed
-class GameDetailsEntity with _$GameDetailsEntity {
+abstract class GameDetailsEntity with _$GameDetailsEntity {
   const factory GameDetailsEntity({
     required int id,
     required String name,
@@ -23,7 +23,7 @@ class GameDetailsEntity with _$GameDetailsEntity {
 }
 
 @freezed
-class ScreenShot with _$ScreenShot {
+abstract class ScreenShot with _$ScreenShot {
   const factory ScreenShot({
     required int id,
     required String image,
