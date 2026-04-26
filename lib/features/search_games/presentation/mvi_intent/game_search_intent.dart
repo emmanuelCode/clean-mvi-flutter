@@ -19,7 +19,9 @@ class GameSearchIntentFactory extends _$GameSearchIntentFactory {
       count: 0,
       next: null,
       previous: null,
-      gameList: [],
+      gameList: [], 
+      totalPages: 0, 
+      currentPage: 0,
     );
   }
 
@@ -30,6 +32,7 @@ class GameSearchIntentFactory extends _$GameSearchIntentFactory {
         state = await _gameSearchRepository.fetchGames(name);
       case LoadPage(uri: final uri):
         state = await _gameSearchRepository.fetchPage(uri);
+        debugPrint('uri: $uri');
       case SelectGame(context: final context):
         Navigator.push(context, MaterialPageRoute(builder: (context) => GameDetailsScreen()));
     }

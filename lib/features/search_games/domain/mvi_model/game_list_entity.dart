@@ -8,13 +8,19 @@ part 'game_list_entity.freezed.dart';
 part 'game_list_entity.g.dart';
 
 // this is the model from the MVI "M"
+// I'll also list what my view would need inside this entity,
+// so I can just return this from the repository and use it in the view
+// without doing any business logic(algorithm or calculations) in the view or intent factory
 @freezed
 abstract class GameListEntity with _$GameListEntity {
   const factory GameListEntity({
     required List<GameDetailsEntity> gameList,
-    required int count,//total game results
+    //total game results but might be unnecessary if we don't use it in the views
+    required int count,
+    required int totalPages,
+    required int currentPage,
     // if null means no more pages
-    required String? next, previous, // represent page from the api
+    required  String? next, String? previous, // represent page from the api
   }) = _GameListEntity;
 
   factory GameListEntity.fromJson(Map<String, Object?> json) =>

@@ -42,7 +42,7 @@ final class GameSearchIntentFactoryProvider
 }
 
 String _$gameSearchIntentFactoryHash() =>
-    r'f34f12d10f49511a5f41f231fcb255d8f04afd34';
+    r'941f8d1b13d6bb4d897edbf84b21dfa23529fcce';
 
 abstract class _$GameSearchIntentFactory extends $Notifier<GameListEntity> {
   GameListEntity build();
