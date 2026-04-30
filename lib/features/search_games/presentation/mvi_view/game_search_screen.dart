@@ -67,9 +67,7 @@ class _SearchGamesScreenState extends ConsumerState<SearchGamesScreen> {
                 itemBuilder: (context, index) => GameWidget(
                   id: state.gameList[index].id,
                   title: state.gameList[index].name,
-                  imageUrl: state.gameList[index].screenShots!.isEmpty
-                      ? ''
-                      : state.gameList[index].screenShots!.first.image,
+                  imageUrl: state.gameList[index].backgroundImage ?? '',
                 ),
                 itemCount: state.gameList.length,
               ),

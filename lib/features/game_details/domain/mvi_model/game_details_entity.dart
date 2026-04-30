@@ -15,7 +15,10 @@ abstract class GameDetailsEntity with _$GameDetailsEntity {
     required String? nameOriginal,
     required String? description,
     required String? released,
-    // todo: add developer, esrb_rating, genres
+    required String? genres,
+    required String? platforms,
+    required String? esrbRating,
+    // todo:implement developer, esrb_rating, genres
     @JsonKey(name: 'background_image') required String? backgroundImage,
     @JsonKey(name: 'short_screenshots') required List<ScreenShot>? screenShots,
   }) = _GameDetailsEntity;

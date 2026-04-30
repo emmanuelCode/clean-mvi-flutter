@@ -9,7 +9,7 @@ part of 'game_list_entity.dart';
 _GameListEntity _$GameListEntityFromJson(Map<String, dynamic> json) =>
     _GameListEntity(
       gameList: (json['gameList'] as List<dynamic>)
-          .map((e) => GameDetailsEntity.fromJson(e as Map<String, dynamic>))
+          .map((e) => GameEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
       count: (json['count'] as num).toInt(),
       totalPages: (json['totalPages'] as num).toInt(),
@@ -26,4 +26,17 @@ Map<String, dynamic> _$GameListEntityToJson(_GameListEntity instance) =>
       'currentPage': instance.currentPage,
       'next': instance.next,
       'previous': instance.previous,
+    };
+
+_GameEntity _$GameEntityFromJson(Map<String, dynamic> json) => _GameEntity(
+  id: (json['id'] as num).toInt(),
+  name: json['name'] as String,
+  backgroundImage: json['background_image'] as String?,
+);
+
+Map<String, dynamic> _$GameEntityToJson(_GameEntity instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'background_image': instance.backgroundImage,
     };

@@ -15,7 +15,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GameDetailsEntity implements DiagnosticableTreeMixin {
 
- int get id; String get name; String? get nameOriginal; String? get description; String? get released;@JsonKey(name: 'background_image') String? get backgroundImage;@JsonKey(name: 'short_screenshots') List<ScreenShot>? get screenShots;
+ int get id; String get name; String? get nameOriginal; String? get description; String? get released; String? get genres; String? get platforms; String? get esrbRating;// todo:implement developer, esrb_rating, genres
+@JsonKey(name: 'background_image') String? get backgroundImage;@JsonKey(name: 'short_screenshots') List<ScreenShot>? get screenShots;
 /// Create a copy of GameDetailsEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +30,21 @@ $GameDetailsEntityCopyWith<GameDetailsEntity> get copyWith => _$GameDetailsEntit
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'GameDetailsEntity'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('nameOriginal', nameOriginal))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('released', released))..add(DiagnosticsProperty('backgroundImage', backgroundImage))..add(DiagnosticsProperty('screenShots', screenShots));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('nameOriginal', nameOriginal))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('released', released))..add(DiagnosticsProperty('genres', genres))..add(DiagnosticsProperty('platforms', platforms))..add(DiagnosticsProperty('esrbRating', esrbRating))..add(DiagnosticsProperty('backgroundImage', backgroundImage))..add(DiagnosticsProperty('screenShots', screenShots));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GameDetailsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.nameOriginal, nameOriginal) || other.nameOriginal == nameOriginal)&&(identical(other.description, description) || other.description == description)&&(identical(other.released, released) || other.released == released)&&(identical(other.backgroundImage, backgroundImage) || other.backgroundImage == backgroundImage)&&const DeepCollectionEquality().equals(other.screenShots, screenShots));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GameDetailsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.nameOriginal, nameOriginal) || other.nameOriginal == nameOriginal)&&(identical(other.description, description) || other.description == description)&&(identical(other.released, released) || other.released == released)&&(identical(other.genres, genres) || other.genres == genres)&&(identical(other.platforms, platforms) || other.platforms == platforms)&&(identical(other.esrbRating, esrbRating) || other.esrbRating == esrbRating)&&(identical(other.backgroundImage, backgroundImage) || other.backgroundImage == backgroundImage)&&const DeepCollectionEquality().equals(other.screenShots, screenShots));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,nameOriginal,description,released,backgroundImage,const DeepCollectionEquality().hash(screenShots));
+int get hashCode => Object.hash(runtimeType,id,name,nameOriginal,description,released,genres,platforms,esrbRating,backgroundImage,const DeepCollectionEquality().hash(screenShots));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'GameDetailsEntity(id: $id, name: $name, nameOriginal: $nameOriginal, description: $description, released: $released, backgroundImage: $backgroundImage, screenShots: $screenShots)';
+  return 'GameDetailsEntity(id: $id, name: $name, nameOriginal: $nameOriginal, description: $description, released: $released, genres: $genres, platforms: $platforms, esrbRating: $esrbRating, backgroundImage: $backgroundImage, screenShots: $screenShots)';
 }
 
 
@@ -54,7 +55,7 @@ abstract mixin class $GameDetailsEntityCopyWith<$Res>  {
   factory $GameDetailsEntityCopyWith(GameDetailsEntity value, $Res Function(GameDetailsEntity) _then) = _$GameDetailsEntityCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String? nameOriginal, String? description, String? released,@JsonKey(name: 'background_image') String? backgroundImage,@JsonKey(name: 'short_screenshots') List<ScreenShot>? screenShots
+ int id, String name, String? nameOriginal, String? description, String? released, String? genres, String? platforms, String? esrbRating,@JsonKey(name: 'background_image') String? backgroundImage,@JsonKey(name: 'short_screenshots') List<ScreenShot>? screenShots
 });
 
 
@@ -71,13 +72,16 @@ class _$GameDetailsEntityCopyWithImpl<$Res>
 
 /// Create a copy of GameDetailsEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? nameOriginal = freezed,Object? description = freezed,Object? released = freezed,Object? backgroundImage = freezed,Object? screenShots = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? nameOriginal = freezed,Object? description = freezed,Object? released = freezed,Object? genres = freezed,Object? platforms = freezed,Object? esrbRating = freezed,Object? backgroundImage = freezed,Object? screenShots = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,nameOriginal: freezed == nameOriginal ? _self.nameOriginal : nameOriginal // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,released: freezed == released ? _self.released : released // ignore: cast_nullable_to_non_nullable
+as String?,genres: freezed == genres ? _self.genres : genres // ignore: cast_nullable_to_non_nullable
+as String?,platforms: freezed == platforms ? _self.platforms : platforms // ignore: cast_nullable_to_non_nullable
+as String?,esrbRating: freezed == esrbRating ? _self.esrbRating : esrbRating // ignore: cast_nullable_to_non_nullable
 as String?,backgroundImage: freezed == backgroundImage ? _self.backgroundImage : backgroundImage // ignore: cast_nullable_to_non_nullable
 as String?,screenShots: freezed == screenShots ? _self.screenShots : screenShots // ignore: cast_nullable_to_non_nullable
 as List<ScreenShot>?,
@@ -165,10 +169,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String? nameOriginal,  String? description,  String? released, @JsonKey(name: 'background_image')  String? backgroundImage, @JsonKey(name: 'short_screenshots')  List<ScreenShot>? screenShots)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String? nameOriginal,  String? description,  String? released,  String? genres,  String? platforms,  String? esrbRating, @JsonKey(name: 'background_image')  String? backgroundImage, @JsonKey(name: 'short_screenshots')  List<ScreenShot>? screenShots)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GameDetailsEntity() when $default != null:
-return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.released,_that.backgroundImage,_that.screenShots);case _:
+return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.released,_that.genres,_that.platforms,_that.esrbRating,_that.backgroundImage,_that.screenShots);case _:
   return orElse();
 
 }
@@ -186,10 +190,10 @@ return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.r
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String? nameOriginal,  String? description,  String? released, @JsonKey(name: 'background_image')  String? backgroundImage, @JsonKey(name: 'short_screenshots')  List<ScreenShot>? screenShots)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String? nameOriginal,  String? description,  String? released,  String? genres,  String? platforms,  String? esrbRating, @JsonKey(name: 'background_image')  String? backgroundImage, @JsonKey(name: 'short_screenshots')  List<ScreenShot>? screenShots)  $default,) {final _that = this;
 switch (_that) {
 case _GameDetailsEntity():
-return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.released,_that.backgroundImage,_that.screenShots);case _:
+return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.released,_that.genres,_that.platforms,_that.esrbRating,_that.backgroundImage,_that.screenShots);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -206,10 +210,10 @@ return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.r
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String? nameOriginal,  String? description,  String? released, @JsonKey(name: 'background_image')  String? backgroundImage, @JsonKey(name: 'short_screenshots')  List<ScreenShot>? screenShots)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String? nameOriginal,  String? description,  String? released,  String? genres,  String? platforms,  String? esrbRating, @JsonKey(name: 'background_image')  String? backgroundImage, @JsonKey(name: 'short_screenshots')  List<ScreenShot>? screenShots)?  $default,) {final _that = this;
 switch (_that) {
 case _GameDetailsEntity() when $default != null:
-return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.released,_that.backgroundImage,_that.screenShots);case _:
+return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.released,_that.genres,_that.platforms,_that.esrbRating,_that.backgroundImage,_that.screenShots);case _:
   return null;
 
 }
@@ -221,7 +225,7 @@ return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.r
 @JsonSerializable()
 
 class _GameDetailsEntity with DiagnosticableTreeMixin implements GameDetailsEntity {
-  const _GameDetailsEntity({required this.id, required this.name, required this.nameOriginal, required this.description, required this.released, @JsonKey(name: 'background_image') required this.backgroundImage, @JsonKey(name: 'short_screenshots') required final  List<ScreenShot>? screenShots}): _screenShots = screenShots;
+  const _GameDetailsEntity({required this.id, required this.name, required this.nameOriginal, required this.description, required this.released, required this.genres, required this.platforms, required this.esrbRating, @JsonKey(name: 'background_image') required this.backgroundImage, @JsonKey(name: 'short_screenshots') required final  List<ScreenShot>? screenShots}): _screenShots = screenShots;
   factory _GameDetailsEntity.fromJson(Map<String, dynamic> json) => _$GameDetailsEntityFromJson(json);
 
 @override final  int id;
@@ -229,6 +233,10 @@ class _GameDetailsEntity with DiagnosticableTreeMixin implements GameDetailsEnti
 @override final  String? nameOriginal;
 @override final  String? description;
 @override final  String? released;
+@override final  String? genres;
+@override final  String? platforms;
+@override final  String? esrbRating;
+// todo:implement developer, esrb_rating, genres
 @override@JsonKey(name: 'background_image') final  String? backgroundImage;
  final  List<ScreenShot>? _screenShots;
 @override@JsonKey(name: 'short_screenshots') List<ScreenShot>? get screenShots {
@@ -254,21 +262,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'GameDetailsEntity'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('nameOriginal', nameOriginal))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('released', released))..add(DiagnosticsProperty('backgroundImage', backgroundImage))..add(DiagnosticsProperty('screenShots', screenShots));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('nameOriginal', nameOriginal))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('released', released))..add(DiagnosticsProperty('genres', genres))..add(DiagnosticsProperty('platforms', platforms))..add(DiagnosticsProperty('esrbRating', esrbRating))..add(DiagnosticsProperty('backgroundImage', backgroundImage))..add(DiagnosticsProperty('screenShots', screenShots));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GameDetailsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.nameOriginal, nameOriginal) || other.nameOriginal == nameOriginal)&&(identical(other.description, description) || other.description == description)&&(identical(other.released, released) || other.released == released)&&(identical(other.backgroundImage, backgroundImage) || other.backgroundImage == backgroundImage)&&const DeepCollectionEquality().equals(other._screenShots, _screenShots));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GameDetailsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.nameOriginal, nameOriginal) || other.nameOriginal == nameOriginal)&&(identical(other.description, description) || other.description == description)&&(identical(other.released, released) || other.released == released)&&(identical(other.genres, genres) || other.genres == genres)&&(identical(other.platforms, platforms) || other.platforms == platforms)&&(identical(other.esrbRating, esrbRating) || other.esrbRating == esrbRating)&&(identical(other.backgroundImage, backgroundImage) || other.backgroundImage == backgroundImage)&&const DeepCollectionEquality().equals(other._screenShots, _screenShots));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,nameOriginal,description,released,backgroundImage,const DeepCollectionEquality().hash(_screenShots));
+int get hashCode => Object.hash(runtimeType,id,name,nameOriginal,description,released,genres,platforms,esrbRating,backgroundImage,const DeepCollectionEquality().hash(_screenShots));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'GameDetailsEntity(id: $id, name: $name, nameOriginal: $nameOriginal, description: $description, released: $released, backgroundImage: $backgroundImage, screenShots: $screenShots)';
+  return 'GameDetailsEntity(id: $id, name: $name, nameOriginal: $nameOriginal, description: $description, released: $released, genres: $genres, platforms: $platforms, esrbRating: $esrbRating, backgroundImage: $backgroundImage, screenShots: $screenShots)';
 }
 
 
@@ -279,7 +287,7 @@ abstract mixin class _$GameDetailsEntityCopyWith<$Res> implements $GameDetailsEn
   factory _$GameDetailsEntityCopyWith(_GameDetailsEntity value, $Res Function(_GameDetailsEntity) _then) = __$GameDetailsEntityCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String? nameOriginal, String? description, String? released,@JsonKey(name: 'background_image') String? backgroundImage,@JsonKey(name: 'short_screenshots') List<ScreenShot>? screenShots
+ int id, String name, String? nameOriginal, String? description, String? released, String? genres, String? platforms, String? esrbRating,@JsonKey(name: 'background_image') String? backgroundImage,@JsonKey(name: 'short_screenshots') List<ScreenShot>? screenShots
 });
 
 
@@ -296,13 +304,16 @@ class __$GameDetailsEntityCopyWithImpl<$Res>
 
 /// Create a copy of GameDetailsEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? nameOriginal = freezed,Object? description = freezed,Object? released = freezed,Object? backgroundImage = freezed,Object? screenShots = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? nameOriginal = freezed,Object? description = freezed,Object? released = freezed,Object? genres = freezed,Object? platforms = freezed,Object? esrbRating = freezed,Object? backgroundImage = freezed,Object? screenShots = freezed,}) {
   return _then(_GameDetailsEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,nameOriginal: freezed == nameOriginal ? _self.nameOriginal : nameOriginal // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,released: freezed == released ? _self.released : released // ignore: cast_nullable_to_non_nullable
+as String?,genres: freezed == genres ? _self.genres : genres // ignore: cast_nullable_to_non_nullable
+as String?,platforms: freezed == platforms ? _self.platforms : platforms // ignore: cast_nullable_to_non_nullable
+as String?,esrbRating: freezed == esrbRating ? _self.esrbRating : esrbRating // ignore: cast_nullable_to_non_nullable
 as String?,backgroundImage: freezed == backgroundImage ? _self.backgroundImage : backgroundImage // ignore: cast_nullable_to_non_nullable
 as String?,screenShots: freezed == screenShots ? _self._screenShots : screenShots // ignore: cast_nullable_to_non_nullable
 as List<ScreenShot>?,

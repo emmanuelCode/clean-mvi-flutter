@@ -14,7 +14,7 @@ part 'game_list_entity.g.dart';
 @freezed
 abstract class GameListEntity with _$GameListEntity {
   const factory GameListEntity({
-    required List<GameDetailsEntity> gameList,
+    required List<GameEntity> gameList,
     //total game results but might be unnecessary if we don't use it in the views
     required int count,
     required int totalPages,
@@ -26,3 +26,16 @@ abstract class GameListEntity with _$GameListEntity {
   factory GameListEntity.fromJson(Map<String, Object?> json) =>
       _$GameListEntityFromJson(json);
 }
+
+@freezed
+abstract class GameEntity with _$GameEntity {
+  const factory GameEntity({
+    required int id,
+    required String name,
+    @JsonKey(name: 'background_image') required String? backgroundImage,
+    }) = _GameEntity;
+
+  factory GameEntity.fromJson(Map<String, Object?> json) =>
+      _$GameEntityFromJson(json);
+}
+

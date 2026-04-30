@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_clean_architecture_with_mvi/features/game_details/domain/mvi_model/game_details_entity.dart';
 import 'package:flutter_clean_architecture_with_mvi/features/search_games/domain/mvi_model/game_list_entity.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,6 +24,7 @@ abstract class GameSearchRepository {
   // fetch next page or previous page
   Future<GameListEntity> fetchPage(Uri uri);
 }
+
 //TODO: change this so I can filtrer game made by company
 // will be initialized with riverpod in intent factory class
 class Search extends GameSearchRepository {
@@ -38,45 +40,46 @@ class Search extends GameSearchRepository {
       });
 
   @override
-  Future<GameListEntity> fetchGames(String name) {
+  Future<GameListEntity> fetchGames(String name) async {
     super.currentSearch = name;
 
     debugPrint(
       'URI: ${uri.replace(queryParameters: {...uri.queryParameters, 'search': name})}',
     );
 
-    return http
-        .get(
-          uri.replace(
-            queryParameters: {...uri.queryParameters, 'search': name},
-          ),
-        )
-        .then((response) {
-          if (response.statusCode == 200) {
-            var result = jsonDecode(response.body);
+    try {
+      var response = await http.get(
+        uri.replace(queryParameters: {...uri.queryParameters, 'search': name}),
+      );
 
-            debugPrint('GameListEntity: ${result['results']}');
+      if (response.statusCode == 200) {
+        var result = jsonDecode(response.body);
 
-            final count = result['count'] as int; // cast as int for calculation
-            final totalPages = calculateTotalPages(count, GameApiConfig.pageSize);
-            final currentPage = calculateCurrentPage(
-              result['next'],
-              result['previous'],
-              totalPages,
-            );
+        //debugPrint('GameListEntity: ${result['results']}');
 
-            return GameListEntity.fromJson({
-              'count': count,
-              'next': result['next'],
-              'previous': result['previous'],
-              'gameList': result['results'],
-              'totalPages': totalPages,
-              'currentPage': currentPage,
-            });
-          } else {
-            throw Exception('Failed to load games');
-          }
+        final count = result['count'] as int; // cast as int for calculation
+        final totalPages = calculateTotalPages(count, GameApiConfig.pageSize);
+        final currentPage = calculateCurrentPage(
+          result['next'],
+          result['previous'],
+          totalPages,
+        );
+
+        return GameListEntity.fromJson({
+          'count': count,
+          'next': result['next'],
+          'previous': result['previous'],
+          'gameList': result['results'],
+          'totalPages': totalPages,
+          'currentPage': currentPage,
         });
+      } else {
+        throw Exception('Failed to load games');
+      }
+    } catch (e) {
+      debugPrint('Error fetching games: $e');
+      throw Exception('Failed to load games');
+    }
   }
 
   @override

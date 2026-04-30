@@ -67,6 +67,12 @@ class Game implements GameDetailsRepository {
           'released': result['released'],
           'background_image': '${result['background_image']}',
           'short_screenshots': result['short_screenshots'],
+          'genres': (result['genres'] as List<dynamic>?)?.map((e) => e['name'] as String?)
+              .join(', '),
+          'platforms': (result['platforms'] as List<dynamic>?)
+              ?.map((e) => e['platform']['name'] as String?)
+              .join(', '),
+          'esrb_rating': result['esrb_rating']['name'] as String?,
         });
       }
     } catch (e) {

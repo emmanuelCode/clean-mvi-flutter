@@ -150,7 +150,8 @@ class GameScreen extends StatelessWidget {
                                     titleTextStyle: titleTextStyle,
                                     subtitleTextStyle: subtitleTextStyle,
                                     title: Text('Genre'),
-                                    subtitle: Text('Action, Adventure'),
+                                    //TODO: unit test candidate for empty string
+                                    subtitle: Text(gameDetailsEntity.genres ?? "N/A"),
                                     contentPadding: EdgeInsets.zero,
                                     isThreeLine: true,
                                   ),
@@ -159,7 +160,7 @@ class GameScreen extends StatelessWidget {
                                     subtitleTextStyle: subtitleTextStyle,
                                     title: Text('Platforms'),
                                     subtitle: Text(
-                                      'PC, PS5, Xbox Series X, Switch, iOS, Android',
+                                      gameDetailsEntity.platforms ?? "N/A",
                                     ),
                                     contentPadding: EdgeInsets.zero,
                                     isThreeLine: true,
@@ -168,7 +169,9 @@ class GameScreen extends StatelessWidget {
                                     titleTextStyle: titleTextStyle,
                                     subtitleTextStyle: subtitleTextStyle,
                                     title: Text('ESRB Rating'),
-                                    subtitle: Text('Teen'),
+                                    subtitle: Text(
+                                      gameDetailsEntity.esrbRating ?? "N/A",
+                                    ),
                                     contentPadding: EdgeInsets.zero,
                                     isThreeLine: true,
                                   ),
