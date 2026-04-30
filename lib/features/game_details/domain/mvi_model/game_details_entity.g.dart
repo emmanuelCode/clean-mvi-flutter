@@ -13,6 +13,7 @@ _GameDetailsEntity _$GameDetailsEntityFromJson(Map<String, dynamic> json) =>
       nameOriginal: json['nameOriginal'] as String?,
       description: json['description'] as String?,
       released: json['released'] as String?,
+      backgroundImage: json['background_image'] as String?,
       screenShots: (json['short_screenshots'] as List<dynamic>?)
           ?.map((e) => ScreenShot.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -25,6 +26,7 @@ Map<String, dynamic> _$GameDetailsEntityToJson(_GameDetailsEntity instance) =>
       'nameOriginal': instance.nameOriginal,
       'description': instance.description,
       'released': instance.released,
+      'background_image': instance.backgroundImage,
       'short_screenshots': instance.screenShots,
     };
 

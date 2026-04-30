@@ -10,54 +10,95 @@ part of 'game_details_intent.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(GameDetailsIntentFactory)
-final gameDetailsIntentFactoryProvider = GameDetailsIntentFactoryProvider._();
+final gameDetailsIntentFactoryProvider = GameDetailsIntentFactoryFamily._();
 
 final class GameDetailsIntentFactoryProvider
-    extends $NotifierProvider<GameDetailsIntentFactory, GameDetailsEntity> {
-  GameDetailsIntentFactoryProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'gameDetailsIntentFactoryProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+    extends
+        $AsyncNotifierProvider<GameDetailsIntentFactory, GameDetailsEntity> {
+  GameDetailsIntentFactoryProvider._({
+    required GameDetailsIntentFactoryFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'gameDetailsIntentFactoryProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
   String debugGetCreateSourceHash() => _$gameDetailsIntentFactoryHash();
+
+  @override
+  String toString() {
+    return r'gameDetailsIntentFactoryProvider'
+        ''
+        '($argument)';
+  }
 
   @$internal
   @override
   GameDetailsIntentFactory create() => GameDetailsIntentFactory();
 
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(GameDetailsEntity value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<GameDetailsEntity>(value),
-    );
+  @override
+  bool operator ==(Object other) {
+    return other is GameDetailsIntentFactoryProvider &&
+        other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
 String _$gameDetailsIntentFactoryHash() =>
-    r'49a95871e03fff49d8cba6af90f54b6e093e64c8';
+    r'3145d6686565011315053a7331cc4a9b885c8678';
 
-abstract class _$GameDetailsIntentFactory extends $Notifier<GameDetailsEntity> {
-  GameDetailsEntity build();
+final class GameDetailsIntentFactoryFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          GameDetailsIntentFactory,
+          AsyncValue<GameDetailsEntity>,
+          GameDetailsEntity,
+          FutureOr<GameDetailsEntity>,
+          int
+        > {
+  GameDetailsIntentFactoryFamily._()
+    : super(
+        retry: null,
+        name: r'gameDetailsIntentFactoryProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  GameDetailsIntentFactoryProvider call(int gameId) =>
+      GameDetailsIntentFactoryProvider._(argument: gameId, from: this);
+
+  @override
+  String toString() => r'gameDetailsIntentFactoryProvider';
+}
+
+abstract class _$GameDetailsIntentFactory
+    extends $AsyncNotifier<GameDetailsEntity> {
+  late final _$args = ref.$arg as int;
+  int get gameId => _$args;
+
+  FutureOr<GameDetailsEntity> build(int gameId);
   @$mustCallSuper
   @override
   void runBuild() {
-    final ref = this.ref as $Ref<GameDetailsEntity, GameDetailsEntity>;
+    final ref =
+        this.ref as $Ref<AsyncValue<GameDetailsEntity>, GameDetailsEntity>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<GameDetailsEntity, GameDetailsEntity>,
-              GameDetailsEntity,
+              AnyNotifier<AsyncValue<GameDetailsEntity>, GameDetailsEntity>,
+              AsyncValue<GameDetailsEntity>,
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

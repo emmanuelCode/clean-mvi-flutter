@@ -4,37 +4,56 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../mvi_intent/game_search_intent.dart';
 import 'game_search_view_event.dart';
 
-class SearchGamesScreen extends ConsumerWidget {
+class SearchGamesScreen extends ConsumerStatefulWidget {
   final String title;
   const SearchGamesScreen({required this.title, super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SearchGamesScreen> createState() => _SearchGamesScreenState();
+}
+
+class _SearchGamesScreenState extends ConsumerState<SearchGamesScreen> {
+  late final TextEditingController _searchController;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     //TODO: finish layout.
     var action = ref.read(gameSearchIntentFactoryProvider.notifier);
-    var searchText = '';
     var state = ref.watch(gameSearchIntentFactoryProvider);
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
             SearchBar(
-              onChanged: (value) => searchText = value,
-              padding: WidgetStatePropertyAll(
+              controller: _searchController,
+              padding: const WidgetStatePropertyAll(
                 EdgeInsets.symmetric(horizontal: 16),
               ),
               leading: const Icon(Icons.search),
               hintText: 'Search Games',
               trailing: [
                 TextButton(
-                  onPressed: () =>
-                      action.toIntent(SearchGame(name: searchText)),
+                  onPressed: () => action.toIntent(
+                    SearchGame(name: _searchController.text.trim()),
+                  ),
                   child: const Text('GO'),
                 ),
               ],
@@ -46,6 +65,7 @@ class SearchGamesScreen extends ConsumerWidget {
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (context, index) => GameWidget(
+                  id: state.gameList[index].id,
                   title: state.gameList[index].name,
                   imageUrl: state.gameList[index].screenShots!.isEmpty
                       ? ''
@@ -63,9 +83,15 @@ class SearchGamesScreen extends ConsumerWidget {
 }
 
 class GameWidget extends ConsumerWidget {
+  final int id;
   final String title;
   final String imageUrl;
-  const GameWidget({required this.title, required this.imageUrl, super.key});
+  const GameWidget({
+    required this.id,
+    required this.title,
+    required this.imageUrl,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -74,7 +100,7 @@ class GameWidget extends ConsumerWidget {
       margin: const EdgeInsets.all(8),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () => action.toIntent(SelectGame(context: context)),
+        onTap: () => action.toIntent(SelectGame(context: context, id: id)),
         child: Column(
           children: [
             Expanded(
@@ -118,7 +144,10 @@ class BottomNavigation extends ConsumerWidget {
       mainAxisAlignment: .spaceAround,
       children: [
         TextButton.icon(
-          onPressed: state.previous == null ? null : () => action.toIntent(LoadPage(uri: Uri.parse(state.previous!))),
+          onPressed: state.previous == null
+              ? null
+              : () =>
+                    action.toIntent(LoadPage(uri: Uri.parse(state.previous!))),
           icon: const Icon(Icons.arrow_back),
           label: const Text('Previous'),
         ),
@@ -129,7 +158,9 @@ class BottomNavigation extends ConsumerWidget {
           ),
         ),
         TextButton.icon(
-          onPressed: state.next == null ? null : () => action.toIntent(LoadPage(uri: Uri.parse(state.next!))),
+          onPressed: state.next == null
+              ? null
+              : () => action.toIntent(LoadPage(uri: Uri.parse(state.next!))),
           icon: const Icon(Icons.arrow_forward),
           label: const Text('Next'),
           iconAlignment: IconAlignment.end,

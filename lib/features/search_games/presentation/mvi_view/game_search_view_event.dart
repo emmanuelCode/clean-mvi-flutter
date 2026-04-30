@@ -9,7 +9,7 @@ class SearchGame extends GameSearchViewEvent {
   SearchGame({required this.name});
 }
 
-// load the next or previous game list page resule
+// load the next or previous game list page result
 class LoadPage extends GameSearchViewEvent {
   final Uri uri;
 
@@ -19,6 +19,6 @@ class LoadPage extends GameSearchViewEvent {
 
 class SelectGame extends GameSearchViewEvent {
   final BuildContext context;
-
-  SelectGame({required this.context});
+  final int id;
+  SelectGame({required this.context, required this.id });
 }

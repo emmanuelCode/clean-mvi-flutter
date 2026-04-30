@@ -23,13 +23,13 @@ abstract class GameSearchRepository {
   // fetch next page or previous page
   Future<GameListEntity> fetchPage(Uri uri);
 }
-
+//TODO: change this so I can filtrer game made by company
 // will be initialized with riverpod in intent factory class
 class Search extends GameSearchRepository {
   final Uri uri;
 
   Search()
-    : uri = Uri.https(GameApiConfig.baseUrl, GameApiConfig.gamePath, {
+    : uri = Uri.https(GameApiConfig.baseUrl, '/api/games', {
         'key': GameApiConfig.apiKey,
         // extra search parameters
         'search_precise': 'true',

@@ -15,8 +15,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GameListEntity {
 
- List<GameDetailsEntity> get gameList; int get count;//total game results
- int get totalPages; int get currentPage;// if null means no more pages
+ List<GameDetailsEntity> get gameList;//total game results but might be unnecessary if we don't use it in the views
+ int get count; int get totalPages; int get currentPage;// if null means no more pages
  String? get next; String? get previous;
 /// Create a copy of GameListEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -226,8 +226,8 @@ class _GameListEntity implements GameListEntity {
   return EqualUnmodifiableListView(_gameList);
 }
 
+//total game results but might be unnecessary if we don't use it in the views
 @override final  int count;
-//total game results
 @override final  int totalPages;
 @override final  int currentPage;
 // if null means no more pages

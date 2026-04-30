@@ -19,22 +19,25 @@ class GameSearchIntentFactory extends _$GameSearchIntentFactory {
       count: 0,
       next: null,
       previous: null,
-      gameList: [], 
-      totalPages: 0, 
+      gameList: [],
+      totalPages: 0,
       currentPage: 0,
     );
   }
 
   void toIntent(GameSearchViewEvent gameSearchViewEvent) async {
-    //TODO: load game list state Async guard
+    //TODO: add loading state AsyncValue
     switch (gameSearchViewEvent) {
       case SearchGame(name: final name):
         state = await _gameSearchRepository.fetchGames(name);
       case LoadPage(uri: final uri):
         state = await _gameSearchRepository.fetchPage(uri);
         debugPrint('uri: $uri');
-      case SelectGame(context: final context):
-        Navigator.push(context, MaterialPageRoute(builder: (context) => GameDetailsScreen()));
+      case SelectGame(context: final context, id: final id):
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GameDetailsScreen(id: id)),
+        );
     }
   }
 }
