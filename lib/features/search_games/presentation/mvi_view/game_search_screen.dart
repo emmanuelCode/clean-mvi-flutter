@@ -74,6 +74,9 @@ class _SearchGamesScreenState extends ConsumerState<SearchGamesScreen> {
                 itemCount: state.gameList.length,
               ),
             ),
+
+            Divider(endIndent: 12, indent: 12, thickness: .4),
+            SizedBox(height: 8),
             BottomNavigation(),
           ],
         ),
@@ -141,28 +144,31 @@ class BottomNavigation extends ConsumerWidget {
     var state = ref.watch(gameSearchIntentFactoryProvider);
 
     return Row(
-      mainAxisAlignment: .spaceAround,
+      mainAxisAlignment: .spaceBetween,
       children: [
         TextButton.icon(
           onPressed: state.previous == null
               ? null
               : () =>
                     action.toIntent(LoadPage(uri: Uri.parse(state.previous!))),
-          icon: const Icon(Icons.arrow_back),
-          label: const Text('Previous'),
+          icon: const Icon(Icons.keyboard_arrow_left),
+          label: const Text('PREVIOUS'),
         ),
         Chip(
+          visualDensity: VisualDensity(vertical: -4, horizontal: -4),
+          padding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+          backgroundColor: Colors.grey[200],
           label: Text('Page ${state.currentPage} of ${state.totalPages}'),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(32),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
         TextButton.icon(
           onPressed: state.next == null
               ? null
               : () => action.toIntent(LoadPage(uri: Uri.parse(state.next!))),
-          icon: const Icon(Icons.arrow_forward),
-          label: const Text('Next'),
+          icon: const Icon(Icons.keyboard_arrow_right),
+          label: const Text('NEXT'),
           iconAlignment: IconAlignment.end,
         ),
       ],
