@@ -19,7 +19,7 @@ To run this project you'll need to get a key from RAWG api: `https://rawg.io/api
 - [X] Lay out the foundation of the project (design pattern and architecture)
 - [X] Created the game search sample screen (feature)
 - [X] Created the game details sample screen (feature)
-- [] Link the remaining missing values from the repository (REST api) 
-- [] Inspect, polish and refactor some of the widget and the algorithm
-- [] Build unit tests, widget tests and golden tests.
-- [] Setup Github action to run tests.
+- [ ] Link the remaining missing values from the repository (REST api) 
+- [ ] Inspect, polish and refactor some of the widget and the algorithm
+- [ ] Build unit tests, widget tests and golden tests.
+- [ ] Setup Github action to run tests.
