@@ -1,16 +1,25 @@
-# flutter_clean_architecture_with_mvi
+# Flutter Clean Architecture with MVI
 
-A new Flutter project.
+This is a sample project demonstrating clean architecture and MVI(Model View Intent) design pattern using a feature first approach. I'm using a free gaming api to list games and get game details. I'm using the Freezed package to create model entity and Riverpod to capture user intent.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this project you'll need to get a key from RAWG api: `https://rawg.io/apidocs`.
+1. In the project create an `env` folder and add a file named `key.json`.
+2. Enter the following code and add the key obtained from RAWG website.
+```json
+{
+  "gameApi": "ENTER_YOUR_KEY_HERE"
+}
+ ```
+3. Next in VSCode press `CTRL+F5` to run the project.
 
-A few resources to get you started if this is your first Flutter project:
+## Work in progress
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [X] Lay out the foundation of the project (design pattern and architecture)
+- [X] Created the game search sample screen (feature)
+- [X] Created the game details sample screen (feature)
+- [] Link the remaining missing values from the repository (REST api) 
+- [] Inspect, polish and refactor some of the widget and the algorithm
+- [] Build unit tests, widget tests and golden tests.
+- [] Setup Github action to run tests.
