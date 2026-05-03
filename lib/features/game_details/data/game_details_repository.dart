@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../core/config/api_config.dart';
 import '../../../core/utils/strings_utils.dart';
-import '../../search_games/data/game_search_repository.dart';
 import '../domain/mvi_model/game_details_entity.dart';
 
 abstract class GameDetailsRepository {
@@ -26,12 +26,12 @@ class Game implements GameDetailsRepository {
     debugPrint('GET GAME DETAILS: $gameId');
     try {
       debugPrint('URI: ${uri.toString()}');
-      var response = await http.get(uri);
+      final response = await http.get(uri);
       debugPrint('GameResponse: $response');
       debugPrint('URI2: ${uri.toString()}');
 
       if (response.statusCode == 200) {
-        var result = jsonDecode(response.body); // the data is an array
+        final result = jsonDecode(response.body); // the data is an array
         debugPrint('GameResponse: $response');
 
         debugPrint('GameDetailsEntity: $result');
@@ -44,7 +44,7 @@ class Game implements GameDetailsRepository {
         debugPrint('BACKGROUND_IMAGE: ${result['background_image']}');
         debugPrint('SHORT_SCREENSHOTS: ${result['short_screenshots']}');
 
-        final screenShots = await _getScreenShots(gameId);
+        final screenshots = await _getScreenshots(gameId);
 
 
         return GameDetailsEntity(
@@ -55,7 +55,7 @@ class Game implements GameDetailsRepository {
           description: stripHtmlTags(result['description'] ?? ''),
           released: result['released'],
           backgroundImage: '${result['background_image']}',
-          screenShots: screenShots,
+          screenshots: screenshots,
           genres: (result['genres'] as List<dynamic>?)
               ?.map((e) => e['name'] as String?)
               // filter out null values and if null return empty string instead
@@ -76,7 +76,7 @@ class Game implements GameDetailsRepository {
     return Future.error('Failed to load game details');
   }
 
-  Future<List<ScreenShot>?> _getScreenShots(int gameId) async {
+  Future<List<Screenshot>?> _getScreenshots(int gameId) async {
     final screenshotsUri = uri.replace(
       path: '${GameApiConfig.gamePath}/$gameId/screenshots',
     );
@@ -84,18 +84,18 @@ class Game implements GameDetailsRepository {
     debugPrint('URI: ${screenshotsUri.toString()}');
 
     try {
-      var response = await http.get(screenshotsUri);
+      final response = await http.get(screenshotsUri);
 
-      debugPrint('ScreenshotsResponse: $response');
+      debugPrint('Screenshots Response: $response');
 
       if (response.statusCode == 200) {
-        var result = jsonDecode(response.body); // the data is an array
-        debugPrint('ScreenshotsResponse: $response');
+        final result = jsonDecode(response.body); // the data is an array
+        debugPrint('Screenshots Response: $response');
 
         debugPrint('ID: ${result['results']}');
 
      return (result['results'] as List<dynamic>)
-          .map((e) => ScreenShot.fromJson(e as Map<String, dynamic>))
+          .map((e) => Screenshot.fromJson(e as Map<String, dynamic>))
           .toList();
 
       }
@@ -104,6 +104,6 @@ class Game implements GameDetailsRepository {
       throw Exception('Failed to load screenshots');
     }
 
-    return Future.error('Failed to load screenShots');
+    return Future.error('Failed to load screenshots');
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_clean_architecture_with_mvi/features/game_details/domain/mvi_model/game_details_entity.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -22,9 +21,6 @@ class GameDetailsIntentFactory extends _$GameDetailsIntentFactory {
     switch (gameDetailsViewEvent) {
       case LoadGameDetails(gameId: final gameId):
         state = await AsyncValue.guard(() => _loadGameDetails(gameId));
-      case SeeScreenshots():
-      debugPrint('See Screenshots');
-      return;
     }
   }
 

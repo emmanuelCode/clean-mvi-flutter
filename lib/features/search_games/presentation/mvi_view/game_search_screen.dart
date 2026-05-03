@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../game_details/presentation/mvi_view/game_details_screen.dart';
 import '../mvi_intent/game_search_intent.dart';
 import 'game_search_view_event.dart';
 
@@ -83,7 +84,7 @@ class _SearchGamesScreenState extends ConsumerState<SearchGamesScreen> {
   }
 }
 
-class GameWidget extends ConsumerWidget {
+class GameWidget extends StatelessWidget {
   final int id;
   final String title;
   final String imageUrl;
@@ -95,13 +96,15 @@ class GameWidget extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    var action = ref.read(gameSearchIntentFactoryProvider.notifier);
+  Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () => action.toIntent(SelectGame(context: context, id: id)),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GameDetailsScreen(id: id)),
+        ),
         child: Column(
           children: [
             Expanded(

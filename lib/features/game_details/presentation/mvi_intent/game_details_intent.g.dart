@@ -53,7 +53,7 @@ final class GameDetailsIntentFactoryProvider
 }
 
 String _$gameDetailsIntentFactoryHash() =>
-    r'ecd7578de9d16622f415866484131ba6b8286cd6';
+    r'914549b2fd8e4146cd1073c00933144f3c54d266';
 
 final class GameDetailsIntentFactoryFamily extends $Family
     with

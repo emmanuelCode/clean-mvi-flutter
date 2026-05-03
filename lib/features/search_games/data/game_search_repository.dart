@@ -4,14 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_clean_architecture_with_mvi/features/search_games/domain/mvi_model/game_list_entity.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../core/config/api_config.dart';
 import '../../../core/utils/pagination_calculator_utils.dart';
-
-class GameApiConfig {
-  static const apiKey = String.fromEnvironment('gameApi', defaultValue: '');
-  static const String baseUrl = 'api.rawg.io';
-  static const String gamePath = '/api/games';
-  static const int pageSize = 40;
-}
 
 abstract class GameSearchRepository {
   // Search for games by name
@@ -27,7 +21,7 @@ class Search extends GameSearchRepository {
   final Uri uri;
 
   Search()
-    : uri = Uri.https(GameApiConfig.baseUrl, '/api/games', {
+    : uri = Uri.https(GameApiConfig.baseUrl, GameApiConfig.gamePath, {
         'key': GameApiConfig.apiKey,
         // extra search parameters
         'search_precise': 'true',

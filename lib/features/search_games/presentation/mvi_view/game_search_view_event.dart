@@ -16,9 +16,9 @@ class LoadPage extends GameSearchViewEvent {
   LoadPage({required this.uri});
 }
 
-
-class SelectGame extends GameSearchViewEvent {
-  final BuildContext context;
-  final int id;
-  SelectGame({required this.context, required this.id });
-}
+// we don't need the select game here since the ui takes care of it already
+// class SelectGame extends GameSearchViewEvent {
+//   final BuildContext context;
+//   final int id;
+//   SelectGame({required this.context, required this.id });
+// }

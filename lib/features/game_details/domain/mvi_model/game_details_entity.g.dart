@@ -17,8 +17,8 @@ _GameDetailsEntity _$GameDetailsEntityFromJson(Map<String, dynamic> json) =>
       platforms: json['platforms'] as String?,
       esrbRating: json['esrbRating'] as String?,
       backgroundImage: json['background_image'] as String?,
-      screenShots: (json['screenShots'] as List<dynamic>?)
-          ?.map((e) => ScreenShot.fromJson(e as Map<String, dynamic>))
+      screenshots: (json['screenshots'] as List<dynamic>?)
+          ?.map((e) => Screenshot.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -33,13 +33,13 @@ Map<String, dynamic> _$GameDetailsEntityToJson(_GameDetailsEntity instance) =>
       'platforms': instance.platforms,
       'esrbRating': instance.esrbRating,
       'background_image': instance.backgroundImage,
-      'screenShots': instance.screenShots,
+      'screenshots': instance.screenshots,
     };
 
-_ScreenShot _$ScreenShotFromJson(Map<String, dynamic> json) => _ScreenShot(
+_Screenshot _$ScreenshotFromJson(Map<String, dynamic> json) => _Screenshot(
   id: (json['id'] as num).toInt(),
   image: json['image'] as String,
 );
 
-Map<String, dynamic> _$ScreenShotToJson(_ScreenShot instance) =>
+Map<String, dynamic> _$ScreenshotToJson(_Screenshot instance) =>
     <String, dynamic>{'id': instance.id, 'image': instance.image};

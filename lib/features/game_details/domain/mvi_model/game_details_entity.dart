@@ -19,7 +19,7 @@ abstract class GameDetailsEntity with _$GameDetailsEntity {
     required String? platforms,
     required String? esrbRating,
     @JsonKey(name: 'background_image') required String? backgroundImage,
-    required List<ScreenShot>? screenShots,
+    required List<Screenshot>? screenshots,
   }) = _GameDetailsEntity;
 
   factory GameDetailsEntity.fromJson(Map<String, Object?> json) =>
@@ -27,12 +27,12 @@ abstract class GameDetailsEntity with _$GameDetailsEntity {
 }
 
 @freezed
-abstract class ScreenShot with _$ScreenShot {
-  const factory ScreenShot({
+abstract class Screenshot with _$Screenshot {
+  const factory Screenshot({
     required int id,
     required String image,
-  }) = _ScreenShot;
+  }) = _Screenshot;
 
-  factory ScreenShot.fromJson(Map<String, dynamic> json) =>
-      _$ScreenShotFromJson(json);
+  factory Screenshot.fromJson(Map<String, dynamic> json) =>
+      _$ScreenshotFromJson(json);
 }

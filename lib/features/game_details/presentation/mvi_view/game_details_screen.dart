@@ -11,7 +11,7 @@ class GameDetailsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var game = ref.watch(gameDetailsIntentFactoryProvider(id));
+    final game = ref.watch(gameDetailsIntentFactoryProvider(id));
     return game.when(
       data: (data) => GameScreen(gameDetailsEntity: data),
       error: (error, stackTrace) =>
@@ -114,8 +114,8 @@ class GameScreen extends StatelessWidget {
                       // const SizedBox(height: 16),
                       AboutCard(gameDetailsEntity: gameDetailsEntity),
                       // add screenshots here
-                      if (gameDetailsEntity.screenShots != null &&
-                          gameDetailsEntity.screenShots!.isNotEmpty)
+                      if (gameDetailsEntity.screenshots != null &&
+                          gameDetailsEntity.screenshots!.isNotEmpty)
                         Gallery(gameDetailsEntity: gameDetailsEntity),
                     ],
                   ),
@@ -231,13 +231,52 @@ class Gallery extends StatelessWidget {
         SizedBox(
           height: 200,
           child: CarouselView.weighted(
+            onTap: (index) => _showFullScreenImage(
+              context,
+              gameDetailsEntity.screenshots![index].image,
+            ),
             flexWeights: const [1, 7, 1],
-            children: gameDetailsEntity.screenShots!
+            children: gameDetailsEntity.screenshots!
                 .map((e) => Image.network(e.image, fit: BoxFit.cover))
                 .toList(),
           ),
         ),
       ],
+    );
+  }
+
+  void _showFullScreenImage(BuildContext context, String imageUrl) {
+    showDialog(
+      context: context,
+      useRootNavigator: true,
+      barrierColor: Colors.black.withValues(alpha: 0.8),
+      builder: (context) => Material(
+        color: Colors.transparent,
+        child: Stack(
+          children: [
+            // Background detector to close when tapping the dimmed area
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+              behavior: HitTestBehavior.opaque,
+              child: const SizedBox.expand(),
+            ),
+            Center(
+              child: InteractiveViewer(
+                maxScale: 5.0,
+                child: Image.network(imageUrl, fit: BoxFit.contain),
+              ),
+            ),
+            Positioned(
+              top: MediaQuery.of(context).padding.top + 10,
+              right: 20,
+              child: IconButton(
+                icon: const Icon(Icons.close, color: Colors.white, size: 30),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
