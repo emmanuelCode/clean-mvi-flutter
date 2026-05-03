@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture_with_mvi/features/game_details/presentation/mvi_view/game_details_screen.dart';
 import 'package:flutter_clean_architecture_with_mvi/features/search_games/data/game_search_repository.dart';
 import 'package:flutter_clean_architecture_with_mvi/features/search_games/domain/mvi_model/game_list_entity.dart';
 import 'package:flutter_clean_architecture_with_mvi/features/search_games/presentation/mvi_view/game_search_view_event.dart';
