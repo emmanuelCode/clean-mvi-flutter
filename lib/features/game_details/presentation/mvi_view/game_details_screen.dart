@@ -27,10 +27,6 @@ class GameScreen extends StatelessWidget {
   const GameScreen({super.key, required this.gameDetailsEntity});
   @override
   Widget build(BuildContext context) {
-    final subtitleTextStyle = Theme.of(context).textTheme.titleMedium;
-    final titleTextStyle = subtitleTextStyle!.copyWith(
-      fontWeight: FontWeight.w300,
-    );
     return Scaffold(
       body: Center(
         child: CustomScrollView(
@@ -116,82 +112,11 @@ class GameScreen extends StatelessWidget {
                       //   ],
                       // ),
                       // const SizedBox(height: 16),
-                      Card(
-                        margin: const EdgeInsets.symmetric(vertical: 8),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'ABOUT',
-                                style: Theme.of(context).textTheme.titleLarge
-                                    ?.copyWith(fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                gameDetailsEntity.description ??
-                                    'No description available.',
-                                style: subtitleTextStyle.copyWith(
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              GridView.count(
-                                padding: EdgeInsets.zero,
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 0,
-                                mainAxisSpacing: 8,
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                childAspectRatio: 5 / 2,
-                                children: [
-                                  ListTile(
-                                    titleTextStyle: titleTextStyle,
-                                    subtitleTextStyle: subtitleTextStyle,
-                                    title: Text('Genre'),
-                                    //TODO: unit test candidate for empty string
-                                    subtitle: Text(gameDetailsEntity.genres ?? "N/A"),
-                                    contentPadding: EdgeInsets.zero,
-                                    isThreeLine: true,
-                                  ),
-                                  ListTile(
-                                    titleTextStyle: titleTextStyle,
-                                    subtitleTextStyle: subtitleTextStyle,
-                                    title: Text('Platforms'),
-                                    subtitle: Text(
-                                      gameDetailsEntity.platforms ?? "N/A",
-                                    ),
-                                    contentPadding: EdgeInsets.zero,
-                                    isThreeLine: true,
-                                  ),
-                                  ListTile(
-                                    titleTextStyle: titleTextStyle,
-                                    subtitleTextStyle: subtitleTextStyle,
-                                    title: Text('ESRB Rating'),
-                                    subtitle: Text(
-                                      gameDetailsEntity.esrbRating ?? "N/A",
-                                    ),
-                                    contentPadding: EdgeInsets.zero,
-                                    isThreeLine: true,
-                                  ),
-                                  ListTile(
-                                    titleTextStyle: titleTextStyle,
-                                    subtitleTextStyle: subtitleTextStyle,
-                                    title: Text('Release Date'),
-                                    subtitle: Text(
-                                      gameDetailsEntity.released ?? "N/A",
-                                    ),
-                                    contentPadding: EdgeInsets.zero,
-                                    isThreeLine: true,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      AboutCard(gameDetailsEntity: gameDetailsEntity),
                       // add screenshots here
+                      if (gameDetailsEntity.screenShots != null &&
+                          gameDetailsEntity.screenShots!.isNotEmpty)
+                        Gallery(gameDetailsEntity: gameDetailsEntity),
                     ],
                   ),
                 ),
@@ -200,6 +125,119 @@ class GameScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class AboutCard extends StatelessWidget {
+  const AboutCard({required this.gameDetailsEntity, super.key});
+
+  final GameDetailsEntity gameDetailsEntity;
+
+  @override
+  Widget build(BuildContext context) {
+    final subtitleTextStyle = Theme.of(context).textTheme.titleMedium;
+    final titleTextStyle = subtitleTextStyle!.copyWith(
+      fontWeight: FontWeight.w300,
+    );
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'ABOUT',
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              gameDetailsEntity.description ?? 'No description available.',
+              style: subtitleTextStyle.copyWith(fontWeight: FontWeight.normal),
+            ),
+            const SizedBox(height: 16),
+            GridView.count(
+              padding: EdgeInsets.zero,
+              crossAxisCount: 2,
+              crossAxisSpacing: 0,
+              mainAxisSpacing: 8,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              childAspectRatio: 5 / 2,
+              children: [
+                ListTile(
+                  titleTextStyle: titleTextStyle,
+                  subtitleTextStyle: subtitleTextStyle,
+                  title: Text('Genre'),
+                  //TODO: unit test candidate for empty string
+                  subtitle: Text(gameDetailsEntity.genres ?? "N/A"),
+                  contentPadding: EdgeInsets.zero,
+                  isThreeLine: true,
+                ),
+                ListTile(
+                  titleTextStyle: titleTextStyle,
+                  subtitleTextStyle: subtitleTextStyle,
+                  title: Text('Platforms'),
+                  subtitle: Text(gameDetailsEntity.platforms ?? "N/A"),
+                  contentPadding: EdgeInsets.zero,
+                  isThreeLine: true,
+                ),
+                ListTile(
+                  titleTextStyle: titleTextStyle,
+                  subtitleTextStyle: subtitleTextStyle,
+                  title: Text('ESRB Rating'),
+                  subtitle: Text(gameDetailsEntity.esrbRating ?? "N/A"),
+                  contentPadding: EdgeInsets.zero,
+                  isThreeLine: true,
+                ),
+                ListTile(
+                  titleTextStyle: titleTextStyle,
+                  subtitleTextStyle: subtitleTextStyle,
+                  title: Text('Release Date'),
+                  subtitle: Text(gameDetailsEntity.released ?? "N/A"),
+                  contentPadding: EdgeInsets.zero,
+                  isThreeLine: true,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Gallery extends StatelessWidget {
+  const Gallery({required this.gameDetailsEntity, super.key});
+  final GameDetailsEntity gameDetailsEntity;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: .start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            'VISUAL GALLERY',
+            style: Theme.of(
+              context,
+            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+          ),
+        ),
+        SizedBox(
+          height: 200,
+          child: CarouselView.weighted(
+            flexWeights: const [1, 7, 1],
+            children: gameDetailsEntity.screenShots!
+                .map((e) => Image.network(e.image, fit: BoxFit.cover))
+                .toList(),
+          ),
+        ),
+      ],
     );
   }
 }

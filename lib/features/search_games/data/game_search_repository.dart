@@ -1,11 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_clean_architecture_with_mvi/features/game_details/domain/mvi_model/game_details_entity.dart';
 import 'package:flutter_clean_architecture_with_mvi/features/search_games/domain/mvi_model/game_list_entity.dart';
 import 'package:http/http.dart' as http;
 
-import '../domain/utils/pagination_calculator.dart';
+import '../../../core/utils/pagination_calculator_utils.dart';
 
 class GameApiConfig {
   static const apiKey = String.fromEnvironment('gameApi', defaultValue: '');
@@ -15,10 +14,7 @@ class GameApiConfig {
 }
 
 abstract class GameSearchRepository {
-  // will hold the name for the search across requests
-  String currentSearch = '';
-
-  /// Search for games by name
+  // Search for games by name
   Future<GameListEntity> fetchGames(String name);
 
   // fetch next page or previous page
@@ -36,59 +32,30 @@ class Search extends GameSearchRepository {
         // extra search parameters
         'search_precise': 'true',
         'search_exact': 'true',
+        'exclude_additions': 'true',
+        'ordering': '-rating',
         'page_size': GameApiConfig.pageSize.toString(), // 40 per page
       });
 
   @override
   Future<GameListEntity> fetchGames(String name) async {
-    super.currentSearch = name;
-
-    debugPrint(
-      'URI: ${uri.replace(queryParameters: {...uri.queryParameters, 'search': name})}',
+    final searchUri = uri.replace(
+      queryParameters: {...uri.queryParameters, 'search': name},
     );
-
-    try {
-      var response = await http.get(
-        uri.replace(queryParameters: {...uri.queryParameters, 'search': name}),
-      );
-
-      if (response.statusCode == 200) {
-        var result = jsonDecode(response.body);
-
-        //debugPrint('GameListEntity: ${result['results']}');
-
-        final count = result['count'] as int; // cast as int for calculation
-        final totalPages = calculateTotalPages(count, GameApiConfig.pageSize);
-        final currentPage = calculateCurrentPage(
-          result['next'],
-          result['previous'],
-          totalPages,
-        );
-
-        return GameListEntity.fromJson({
-          'count': count,
-          'next': result['next'],
-          'previous': result['previous'],
-          'gameList': result['results'],
-          'totalPages': totalPages,
-          'currentPage': currentPage,
-        });
-      } else {
-        throw Exception('Failed to load games');
-      }
-    } catch (e) {
-      debugPrint('Error fetching games: $e');
-      throw Exception('Failed to load games');
-    }
+    return _fetchFromUri(searchUri);
   }
 
   @override
-  Future<GameListEntity> fetchPage(Uri uri) {
-    return http.get(uri).then((response) {
-      if (response.statusCode == 200) {
-        var result = jsonDecode(response.body);
+  Future<GameListEntity> fetchPage(Uri uri) => _fetchFromUri(uri);
 
-        debugPrint('GameListEntity: ${result['results']}');
+  /// Unified helper to fetch and parse game data from a [Uri].
+  Future<GameListEntity> _fetchFromUri(Uri targetUri) async {
+    try {
+      debugPrint('Fetching URI: $targetUri');
+      final response = await http.get(targetUri);
+
+      if (response.statusCode == 200) {
+        final result = jsonDecode(response.body);
 
         final count = result['count'] as int; // cast as int for calculation
         final totalPages = calculateTotalPages(count, GameApiConfig.pageSize);
@@ -107,8 +74,13 @@ class Search extends GameSearchRepository {
           'currentPage': currentPage,
         });
       } else {
-        throw Exception('Failed to load games');
+        throw Exception(
+          'Failed to load games: Status code ${response.statusCode}',
+        );
       }
-    });
+    } catch (e) {
+      debugPrint('Error fetching games: $e');
+      throw Exception('An error occurred while fetching games');
+    }
   }
 }

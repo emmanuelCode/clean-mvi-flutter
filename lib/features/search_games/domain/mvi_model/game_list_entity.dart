@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../game_details/domain/mvi_model/game_details_entity.dart';
-
 part 'game_list_entity.freezed.dart';
 
 // for adding the fromJson and toJson methods
@@ -38,4 +36,3 @@ abstract class GameEntity with _$GameEntity {
   factory GameEntity.fromJson(Map<String, Object?> json) =>
       _$GameEntityFromJson(json);
 }
-

@@ -15,8 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GameDetailsEntity implements DiagnosticableTreeMixin {
 
- int get id; String get name; String? get nameOriginal; String? get description; String? get released; String? get genres; String? get platforms; String? get esrbRating;// todo:implement developer, esrb_rating, genres
-@JsonKey(name: 'background_image') String? get backgroundImage;@JsonKey(name: 'short_screenshots') List<ScreenShot>? get screenShots;
+ int get id; String get name; String? get nameOriginal; String? get description; String? get released; String? get genres; String? get platforms; String? get esrbRating;@JsonKey(name: 'background_image') String? get backgroundImage; List<ScreenShot>? get screenShots;
 /// Create a copy of GameDetailsEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -55,7 +54,7 @@ abstract mixin class $GameDetailsEntityCopyWith<$Res>  {
   factory $GameDetailsEntityCopyWith(GameDetailsEntity value, $Res Function(GameDetailsEntity) _then) = _$GameDetailsEntityCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String? nameOriginal, String? description, String? released, String? genres, String? platforms, String? esrbRating,@JsonKey(name: 'background_image') String? backgroundImage,@JsonKey(name: 'short_screenshots') List<ScreenShot>? screenShots
+ int id, String name, String? nameOriginal, String? description, String? released, String? genres, String? platforms, String? esrbRating,@JsonKey(name: 'background_image') String? backgroundImage, List<ScreenShot>? screenShots
 });
 
 
@@ -169,7 +168,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String? nameOriginal,  String? description,  String? released,  String? genres,  String? platforms,  String? esrbRating, @JsonKey(name: 'background_image')  String? backgroundImage, @JsonKey(name: 'short_screenshots')  List<ScreenShot>? screenShots)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String? nameOriginal,  String? description,  String? released,  String? genres,  String? platforms,  String? esrbRating, @JsonKey(name: 'background_image')  String? backgroundImage,  List<ScreenShot>? screenShots)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GameDetailsEntity() when $default != null:
 return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.released,_that.genres,_that.platforms,_that.esrbRating,_that.backgroundImage,_that.screenShots);case _:
@@ -190,7 +189,7 @@ return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.r
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String? nameOriginal,  String? description,  String? released,  String? genres,  String? platforms,  String? esrbRating, @JsonKey(name: 'background_image')  String? backgroundImage, @JsonKey(name: 'short_screenshots')  List<ScreenShot>? screenShots)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String? nameOriginal,  String? description,  String? released,  String? genres,  String? platforms,  String? esrbRating, @JsonKey(name: 'background_image')  String? backgroundImage,  List<ScreenShot>? screenShots)  $default,) {final _that = this;
 switch (_that) {
 case _GameDetailsEntity():
 return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.released,_that.genres,_that.platforms,_that.esrbRating,_that.backgroundImage,_that.screenShots);case _:
@@ -210,7 +209,7 @@ return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.r
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String? nameOriginal,  String? description,  String? released,  String? genres,  String? platforms,  String? esrbRating, @JsonKey(name: 'background_image')  String? backgroundImage, @JsonKey(name: 'short_screenshots')  List<ScreenShot>? screenShots)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String? nameOriginal,  String? description,  String? released,  String? genres,  String? platforms,  String? esrbRating, @JsonKey(name: 'background_image')  String? backgroundImage,  List<ScreenShot>? screenShots)?  $default,) {final _that = this;
 switch (_that) {
 case _GameDetailsEntity() when $default != null:
 return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.released,_that.genres,_that.platforms,_that.esrbRating,_that.backgroundImage,_that.screenShots);case _:
@@ -225,7 +224,7 @@ return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.r
 @JsonSerializable()
 
 class _GameDetailsEntity with DiagnosticableTreeMixin implements GameDetailsEntity {
-  const _GameDetailsEntity({required this.id, required this.name, required this.nameOriginal, required this.description, required this.released, required this.genres, required this.platforms, required this.esrbRating, @JsonKey(name: 'background_image') required this.backgroundImage, @JsonKey(name: 'short_screenshots') required final  List<ScreenShot>? screenShots}): _screenShots = screenShots;
+  const _GameDetailsEntity({required this.id, required this.name, required this.nameOriginal, required this.description, required this.released, required this.genres, required this.platforms, required this.esrbRating, @JsonKey(name: 'background_image') required this.backgroundImage, required final  List<ScreenShot>? screenShots}): _screenShots = screenShots;
   factory _GameDetailsEntity.fromJson(Map<String, dynamic> json) => _$GameDetailsEntityFromJson(json);
 
 @override final  int id;
@@ -236,10 +235,9 @@ class _GameDetailsEntity with DiagnosticableTreeMixin implements GameDetailsEnti
 @override final  String? genres;
 @override final  String? platforms;
 @override final  String? esrbRating;
-// todo:implement developer, esrb_rating, genres
 @override@JsonKey(name: 'background_image') final  String? backgroundImage;
  final  List<ScreenShot>? _screenShots;
-@override@JsonKey(name: 'short_screenshots') List<ScreenShot>? get screenShots {
+@override List<ScreenShot>? get screenShots {
   final value = _screenShots;
   if (value == null) return null;
   if (_screenShots is EqualUnmodifiableListView) return _screenShots;
@@ -287,7 +285,7 @@ abstract mixin class _$GameDetailsEntityCopyWith<$Res> implements $GameDetailsEn
   factory _$GameDetailsEntityCopyWith(_GameDetailsEntity value, $Res Function(_GameDetailsEntity) _then) = __$GameDetailsEntityCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String? nameOriginal, String? description, String? released, String? genres, String? platforms, String? esrbRating,@JsonKey(name: 'background_image') String? backgroundImage,@JsonKey(name: 'short_screenshots') List<ScreenShot>? screenShots
+ int id, String name, String? nameOriginal, String? description, String? released, String? genres, String? platforms, String? esrbRating,@JsonKey(name: 'background_image') String? backgroundImage, List<ScreenShot>? screenShots
 });
 
 

@@ -32,7 +32,6 @@ class GameSearchIntentFactory extends _$GameSearchIntentFactory {
         state = await _gameSearchRepository.fetchGames(name);
       case LoadPage(uri: final uri):
         state = await _gameSearchRepository.fetchPage(uri);
-        debugPrint('uri: $uri');
       case SelectGame(context: final context, id: final id):
         Navigator.push(
           context,

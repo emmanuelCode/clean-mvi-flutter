@@ -10,4 +10,4 @@ class LoadGameDetails extends GameDetailsViewEvent {
 
 class SeeScreenshots extends GameDetailsViewEvent {}
 
-class GoBackToGameSearchResults extends GameDetailsViewEvent {}
+// class GoBackToGameSearchResults extends GameDetailsViewEvent {}

@@ -18,9 +18,8 @@ abstract class GameDetailsEntity with _$GameDetailsEntity {
     required String? genres,
     required String? platforms,
     required String? esrbRating,
-    // todo:implement developer, esrb_rating, genres
     @JsonKey(name: 'background_image') required String? backgroundImage,
-    @JsonKey(name: 'short_screenshots') required List<ScreenShot>? screenShots,
+    required List<ScreenShot>? screenShots,
   }) = _GameDetailsEntity;
 
   factory GameDetailsEntity.fromJson(Map<String, Object?> json) =>
