@@ -1,6 +1,7 @@
 import 'package:flutter_clean_architecture_with_mvi/core/config/api_config.dart';
 import 'package:flutter_clean_architecture_with_mvi/core/utils/pagination_calculator_utils.dart';
-import 'package:test/test.dart';
+import 'package:flutter_test/flutter_test.dart';
+
 
 void main() {
   const pageSize = GameApiConfig.pageSize;
@@ -17,7 +18,7 @@ void main() {
       () {
         // Testing a range of values to ensure boundaries (like 0, 1, 40, 41) work correctly
         for (int i = 0; i < 1000; i++) {
-          final expected = (i / pageSize).ceil();
+          final expected = (i / pageSize).round();
           expect(
             calculateTotalPages(i, pageSize),
             expected,

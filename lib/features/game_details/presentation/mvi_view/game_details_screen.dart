@@ -63,7 +63,6 @@ class GameScreen extends StatelessWidget {
                   //TODO: redundant code,need to create a reusable widget for this.
                   Image.network(
                     gameDetailsEntity.backgroundImage ?? '',
-                    //'https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg', // test image
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) => Container(
                       color: Colors.grey[300],

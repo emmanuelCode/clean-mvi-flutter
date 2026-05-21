@@ -12,23 +12,23 @@ abstract class GameDetailsRepository {
 }
 
 class Game implements GameDetailsRepository {
-  final Uri uri; //todo candidate for unit testing
-  final int gameId;
-  Game(this.gameId)
-    : uri = Uri.https(
-        GameApiConfig.baseUrl,
-        '${GameApiConfig.gamePath}/$gameId',
-        {'key': GameApiConfig.apiKey},
-      );
+  final http.Client _client;
+
+  Game({http.Client? client}) : _client = client ?? http.Client();
 
   @override
   Future<GameDetailsEntity> getGameDetails(int gameId) async {
     debugPrint('GET GAME DETAILS: $gameId');
     try {
-      debugPrint('URI: ${uri.toString()}');
-      final response = await http.get(uri);
+      final requestUri = Uri.https(
+        GameApiConfig.baseUrl,
+        '${GameApiConfig.gamePath}/$gameId',
+        {'key': GameApiConfig.apiKey},
+      );
+
+      debugPrint('URI: ${requestUri.toString()}');
+      final response = await _client.get(requestUri);
       debugPrint('GameResponse: $response');
-      debugPrint('URI2: ${uri.toString()}');
 
       if (response.statusCode == 200) {
         final result = jsonDecode(response.body); // the data is an array
@@ -46,12 +46,10 @@ class Game implements GameDetailsRepository {
 
         final screenshots = await _getScreenshots(gameId);
 
-
         return GameDetailsEntity(
           id: result['id'],
           name: result['name'],
-          nameOriginal:
-              result['name_original'], // todo to check name original to see if gone throught ui
+          nameOriginal: result['name_original'],
           description: stripHtmlTags(result['description'] ?? ''),
           released: result['released'],
           backgroundImage: '${result['background_image']}',
@@ -77,14 +75,16 @@ class Game implements GameDetailsRepository {
   }
 
   Future<List<Screenshot>?> _getScreenshots(int gameId) async {
-    final screenshotsUri = uri.replace(
-      path: '${GameApiConfig.gamePath}/$gameId/screenshots',
+    final screenshotsUri = Uri.https(
+      GameApiConfig.baseUrl,
+      '${GameApiConfig.gamePath}/$gameId/screenshots',
+      {'key': GameApiConfig.apiKey},
     );
 
     debugPrint('URI: ${screenshotsUri.toString()}');
 
     try {
-      final response = await http.get(screenshotsUri);
+      final response = await _client.get(screenshotsUri);
 
       debugPrint('Screenshots Response: $response');
 
@@ -94,10 +94,9 @@ class Game implements GameDetailsRepository {
 
         debugPrint('ID: ${result['results']}');
 
-     return (result['results'] as List<dynamic>)
-          .map((e) => Screenshot.fromJson(e as Map<String, dynamic>))
-          .toList();
-
+        return (result['results'] as List<dynamic>)
+            .map((e) => Screenshot.fromJson(e as Map<String, dynamic>))
+            .toList();
       }
     } catch (e) {
       debugPrint('Error fetching screenshots: $e');
