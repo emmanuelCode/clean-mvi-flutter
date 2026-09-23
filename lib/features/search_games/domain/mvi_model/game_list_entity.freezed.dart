@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'game_list_entity.dart';
@@ -9,15 +9,14 @@ part of 'game_list_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$GameListEntity {
 
- List<GameEntity> get gameList;//total game results but might be unnecessary if we don't use it in the views
- int get count; int get totalPages; int get currentPage;// if null means no more pages
- String? get next; String? get previous;
+ List<GameEntity> get gameList; int get count; int get totalPages; int get currentPage; String? get next; String? get previous;
 /// Create a copy of GameListEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,16 +29,21 @@ $GameListEntityCopyWith<GameListEntity> get copyWith => _$GameListEntityCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GameListEntity&&const DeepCollectionEquality().equals(other.gameList, gameList)&&(identical(other.count, count) || other.count == count)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.next, next) || other.next == next)&&(identical(other.previous, previous) || other.previous == previous));
+  final _this = this as GameListEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GameListEntity&&const DeepCollectionEquality().equals(other.gameList, _this.gameList)&&(identical(other.count, _this.count) || other.count == _this.count)&&(identical(other.totalPages, _this.totalPages) || other.totalPages == _this.totalPages)&&(identical(other.currentPage, _this.currentPage) || other.currentPage == _this.currentPage)&&(identical(other.next, _this.next) || other.next == _this.next)&&(identical(other.previous, _this.previous) || other.previous == _this.previous));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(gameList),count,totalPages,currentPage,next,previous);
+int get hashCode {
+  final _this = this as GameListEntity;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.gameList),_this.count,_this.totalPages,_this.currentPage,_this.next,_this.previous);
+}
 
 @override
 String toString() {
-  return 'GameListEntity(gameList: $gameList, count: $count, totalPages: $totalPages, currentPage: $currentPage, next: $next, previous: $previous)';
+  final _this = this as GameListEntity;
+  return 'GameListEntity(gameList: ${_this.gameList}, count: ${_this.count}, totalPages: ${_this.totalPages}, currentPage: ${_this.currentPage}, next: ${_this.next}, previous: ${_this.previous})';
 }
 
 
@@ -68,7 +72,7 @@ class _$GameListEntityCopyWithImpl<$Res>
 /// Create a copy of GameListEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? gameList = null,Object? count = null,Object? totalPages = null,Object? currentPage = null,Object? next = freezed,Object? previous = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(GameListEntity(
 gameList: null == gameList ? _self.gameList : gameList // ignore: cast_nullable_to_non_nullable
 as List<GameEntity>,count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
 as int,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
@@ -216,7 +220,7 @@ return $default(_that.gameList,_that.count,_that.totalPages,_that.currentPage,_t
 @JsonSerializable()
 
 class _GameListEntity implements GameListEntity {
-  const _GameListEntity({required final  List<GameEntity> gameList, required this.count, required this.totalPages, required this.currentPage, required this.next, this.previous}): _gameList = gameList;
+  const _GameListEntity({required  List<GameEntity> gameList, required this.count, required this.totalPages, required this.currentPage, required this.next, this.previous}): _gameList = gameList;
   factory _GameListEntity.fromJson(Map<String, dynamic> json) => _$GameListEntityFromJson(json);
 
  final  List<GameEntity> _gameList;
@@ -226,11 +230,9 @@ class _GameListEntity implements GameListEntity {
   return EqualUnmodifiableListView(_gameList);
 }
 
-//total game results but might be unnecessary if we don't use it in the views
 @override final  int count;
 @override final  int totalPages;
 @override final  int currentPage;
-// if null means no more pages
 @override final  String? next;
 @override final  String? previous;
 
@@ -247,16 +249,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GameListEntity&&const DeepCollectionEquality().equals(other._gameList, _gameList)&&(identical(other.count, count) || other.count == count)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.next, next) || other.next == next)&&(identical(other.previous, previous) || other.previous == previous));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _GameListEntity&&const DeepCollectionEquality().equals(other.gameList, _gameList)&&(identical(other.count, count) || other.count == count)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.next, next) || other.next == next)&&(identical(other.previous, previous) || other.previous == previous));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_gameList),count,totalPages,currentPage,next,previous);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_gameList),count,totalPages,currentPage,next,previous);
+}
 
 @override
 String toString() {
-  return 'GameListEntity(gameList: $gameList, count: $count, totalPages: $totalPages, currentPage: $currentPage, next: $next, previous: $previous)';
+    return 'GameListEntity(gameList: $gameList, count: $count, totalPages: $totalPages, currentPage: $currentPage, next: $next, previous: $previous)';
 }
 
 
@@ -316,16 +320,21 @@ $GameEntityCopyWith<GameEntity> get copyWith => _$GameEntityCopyWithImpl<GameEnt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GameEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.backgroundImage, backgroundImage) || other.backgroundImage == backgroundImage));
+  final _this = this as GameEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GameEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.backgroundImage, _this.backgroundImage) || other.backgroundImage == _this.backgroundImage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,backgroundImage);
+int get hashCode {
+  final _this = this as GameEntity;
+  return Object.hash(runtimeType,_this.id,_this.name,_this.backgroundImage);
+}
 
 @override
 String toString() {
-  return 'GameEntity(id: $id, name: $name, backgroundImage: $backgroundImage)';
+  final _this = this as GameEntity;
+  return 'GameEntity(id: ${_this.id}, name: ${_this.name}, backgroundImage: ${_this.backgroundImage})';
 }
 
 
@@ -354,7 +363,7 @@ class _$GameEntityCopyWithImpl<$Res>
 /// Create a copy of GameEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? backgroundImage = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(GameEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,backgroundImage: freezed == backgroundImage ? _self.backgroundImage : backgroundImage // ignore: cast_nullable_to_non_nullable
@@ -519,16 +528,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GameEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.backgroundImage, backgroundImage) || other.backgroundImage == backgroundImage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _GameEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.backgroundImage, backgroundImage) || other.backgroundImage == backgroundImage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,backgroundImage);
+int get hashCode {
+    return Object.hash(runtimeType,id,name,backgroundImage);
+}
 
 @override
 String toString() {
-  return 'GameEntity(id: $id, name: $name, backgroundImage: $backgroundImage)';
+    return 'GameEntity(id: $id, name: $name, backgroundImage: $backgroundImage)';
 }
 
 

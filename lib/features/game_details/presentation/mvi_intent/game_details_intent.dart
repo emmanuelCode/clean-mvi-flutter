@@ -12,7 +12,7 @@ class GameDetailsIntentFactory extends _$GameDetailsIntentFactory {
   @override
   Future<GameDetailsEntity> build(int gameId) async {
     // initialize repository api
-    _gameDetailsRepository = Game();
+    _gameDetailsRepository = ref.watch(gameDetailsRepositoryProvider);
 
     return await _gameDetailsRepository.getGameDetails(gameId);
   }

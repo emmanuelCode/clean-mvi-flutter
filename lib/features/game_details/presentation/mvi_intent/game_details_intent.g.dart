@@ -53,7 +53,7 @@ final class GameDetailsIntentFactoryProvider
 }
 
 String _$gameDetailsIntentFactoryHash() =>
-    r'914549b2fd8e4146cd1073c00933144f3c54d266';
+    r'f6d49e611da0d463a9b82b0d62b447d8a5e07f2c';
 
 final class GameDetailsIntentFactoryFamily extends $Family
     with
@@ -88,7 +88,7 @@ abstract class _$GameDetailsIntentFactory
   FutureOr<GameDetailsEntity> build(int gameId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<GameDetailsEntity>, GameDetailsEntity>;
     final element =
@@ -99,6 +99,6 @@ abstract class _$GameDetailsIntentFactory
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

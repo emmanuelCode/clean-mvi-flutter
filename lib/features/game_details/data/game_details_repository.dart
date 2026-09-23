@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../core/config/api_config.dart';
@@ -10,6 +11,12 @@ import '../domain/mvi_model/game_details_entity.dart';
 abstract class GameDetailsRepository {
   Future<GameDetailsEntity> getGameDetails(int gameId);
 }
+
+// Exposes the repository via a provider so it can be overridden
+// with a mock in tests (see game_details_intent_test.dart).
+final gameDetailsRepositoryProvider = Provider<GameDetailsRepository>(
+  (ref) => Game(),
+);
 
 class Game implements GameDetailsRepository {
   final http.Client _client;

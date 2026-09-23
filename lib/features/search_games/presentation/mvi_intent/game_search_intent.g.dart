@@ -48,7 +48,7 @@ abstract class _$GameSearchIntentFactory extends $Notifier<GameListEntity> {
   GameListEntity build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<GameListEntity, GameListEntity>;
     final element =
         ref.element
@@ -58,6 +58,6 @@ abstract class _$GameSearchIntentFactory extends $Notifier<GameListEntity> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'game_details_entity.dart';
@@ -9,6 +9,7 @@ part of 'game_details_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -27,23 +28,29 @@ $GameDetailsEntityCopyWith<GameDetailsEntity> get copyWith => _$GameDetailsEntit
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as GameDetailsEntity;
   properties
     ..add(DiagnosticsProperty('type', 'GameDetailsEntity'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('nameOriginal', nameOriginal))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('released', released))..add(DiagnosticsProperty('genres', genres))..add(DiagnosticsProperty('platforms', platforms))..add(DiagnosticsProperty('esrbRating', esrbRating))..add(DiagnosticsProperty('backgroundImage', backgroundImage))..add(DiagnosticsProperty('screenshots', screenshots));
+    ..add(DiagnosticsProperty('id', _this.id))..add(DiagnosticsProperty('name', _this.name))..add(DiagnosticsProperty('nameOriginal', _this.nameOriginal))..add(DiagnosticsProperty('description', _this.description))..add(DiagnosticsProperty('released', _this.released))..add(DiagnosticsProperty('genres', _this.genres))..add(DiagnosticsProperty('platforms', _this.platforms))..add(DiagnosticsProperty('esrbRating', _this.esrbRating))..add(DiagnosticsProperty('backgroundImage', _this.backgroundImage))..add(DiagnosticsProperty('screenshots', _this.screenshots));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GameDetailsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.nameOriginal, nameOriginal) || other.nameOriginal == nameOriginal)&&(identical(other.description, description) || other.description == description)&&(identical(other.released, released) || other.released == released)&&(identical(other.genres, genres) || other.genres == genres)&&(identical(other.platforms, platforms) || other.platforms == platforms)&&(identical(other.esrbRating, esrbRating) || other.esrbRating == esrbRating)&&(identical(other.backgroundImage, backgroundImage) || other.backgroundImage == backgroundImage)&&const DeepCollectionEquality().equals(other.screenshots, screenshots));
+  final _this = this as GameDetailsEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GameDetailsEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.nameOriginal, _this.nameOriginal) || other.nameOriginal == _this.nameOriginal)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.released, _this.released) || other.released == _this.released)&&(identical(other.genres, _this.genres) || other.genres == _this.genres)&&(identical(other.platforms, _this.platforms) || other.platforms == _this.platforms)&&(identical(other.esrbRating, _this.esrbRating) || other.esrbRating == _this.esrbRating)&&(identical(other.backgroundImage, _this.backgroundImage) || other.backgroundImage == _this.backgroundImage)&&const DeepCollectionEquality().equals(other.screenshots, _this.screenshots));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,nameOriginal,description,released,genres,platforms,esrbRating,backgroundImage,const DeepCollectionEquality().hash(screenshots));
+int get hashCode {
+  final _this = this as GameDetailsEntity;
+  return Object.hash(runtimeType,_this.id,_this.name,_this.nameOriginal,_this.description,_this.released,_this.genres,_this.platforms,_this.esrbRating,_this.backgroundImage,const DeepCollectionEquality().hash(_this.screenshots));
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'GameDetailsEntity(id: $id, name: $name, nameOriginal: $nameOriginal, description: $description, released: $released, genres: $genres, platforms: $platforms, esrbRating: $esrbRating, backgroundImage: $backgroundImage, screenshots: $screenshots)';
+  final _this = this as GameDetailsEntity;
+  return 'GameDetailsEntity(id: ${_this.id}, name: ${_this.name}, nameOriginal: ${_this.nameOriginal}, description: ${_this.description}, released: ${_this.released}, genres: ${_this.genres}, platforms: ${_this.platforms}, esrbRating: ${_this.esrbRating}, backgroundImage: ${_this.backgroundImage}, screenshots: ${_this.screenshots})';
 }
 
 
@@ -72,7 +79,7 @@ class _$GameDetailsEntityCopyWithImpl<$Res>
 /// Create a copy of GameDetailsEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? nameOriginal = freezed,Object? description = freezed,Object? released = freezed,Object? genres = freezed,Object? platforms = freezed,Object? esrbRating = freezed,Object? backgroundImage = freezed,Object? screenshots = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(GameDetailsEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,nameOriginal: freezed == nameOriginal ? _self.nameOriginal : nameOriginal // ignore: cast_nullable_to_non_nullable
@@ -224,7 +231,7 @@ return $default(_that.id,_that.name,_that.nameOriginal,_that.description,_that.r
 @JsonSerializable()
 
 class _GameDetailsEntity with DiagnosticableTreeMixin implements GameDetailsEntity {
-  const _GameDetailsEntity({required this.id, required this.name, required this.nameOriginal, required this.description, required this.released, required this.genres, required this.platforms, required this.esrbRating, @JsonKey(name: 'background_image') required this.backgroundImage, required final  List<Screenshot>? screenshots}): _screenshots = screenshots;
+  const _GameDetailsEntity({required this.id, required this.name, required this.nameOriginal, required this.description, required this.released, required this.genres, required this.platforms, required this.esrbRating, @JsonKey(name: 'background_image') required this.backgroundImage, required  List<Screenshot>? screenshots}): _screenshots = screenshots;
   factory _GameDetailsEntity.fromJson(Map<String, dynamic> json) => _$GameDetailsEntityFromJson(json);
 
 @override final  int id;
@@ -258,23 +265,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'GameDetailsEntity'))
     ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('nameOriginal', nameOriginal))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('released', released))..add(DiagnosticsProperty('genres', genres))..add(DiagnosticsProperty('platforms', platforms))..add(DiagnosticsProperty('esrbRating', esrbRating))..add(DiagnosticsProperty('backgroundImage', backgroundImage))..add(DiagnosticsProperty('screenshots', screenshots));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GameDetailsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.nameOriginal, nameOriginal) || other.nameOriginal == nameOriginal)&&(identical(other.description, description) || other.description == description)&&(identical(other.released, released) || other.released == released)&&(identical(other.genres, genres) || other.genres == genres)&&(identical(other.platforms, platforms) || other.platforms == platforms)&&(identical(other.esrbRating, esrbRating) || other.esrbRating == esrbRating)&&(identical(other.backgroundImage, backgroundImage) || other.backgroundImage == backgroundImage)&&const DeepCollectionEquality().equals(other._screenshots, _screenshots));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _GameDetailsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.nameOriginal, nameOriginal) || other.nameOriginal == nameOriginal)&&(identical(other.description, description) || other.description == description)&&(identical(other.released, released) || other.released == released)&&(identical(other.genres, genres) || other.genres == genres)&&(identical(other.platforms, platforms) || other.platforms == platforms)&&(identical(other.esrbRating, esrbRating) || other.esrbRating == esrbRating)&&(identical(other.backgroundImage, backgroundImage) || other.backgroundImage == backgroundImage)&&const DeepCollectionEquality().equals(other.screenshots, _screenshots));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,nameOriginal,description,released,genres,platforms,esrbRating,backgroundImage,const DeepCollectionEquality().hash(_screenshots));
+int get hashCode {
+    return Object.hash(runtimeType,id,name,nameOriginal,description,released,genres,platforms,esrbRating,backgroundImage,const DeepCollectionEquality().hash(_screenshots));
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'GameDetailsEntity(id: $id, name: $name, nameOriginal: $nameOriginal, description: $description, released: $released, genres: $genres, platforms: $platforms, esrbRating: $esrbRating, backgroundImage: $backgroundImage, screenshots: $screenshots)';
+    return 'GameDetailsEntity(id: $id, name: $name, nameOriginal: $nameOriginal, description: $description, released: $released, genres: $genres, platforms: $platforms, esrbRating: $esrbRating, backgroundImage: $backgroundImage, screenshots: $screenshots)';
 }
 
 
@@ -337,23 +346,29 @@ $ScreenshotCopyWith<Screenshot> get copyWith => _$ScreenshotCopyWithImpl<Screens
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as Screenshot;
   properties
     ..add(DiagnosticsProperty('type', 'Screenshot'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('image', image));
+    ..add(DiagnosticsProperty('id', _this.id))..add(DiagnosticsProperty('image', _this.image));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Screenshot&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image));
+  final _this = this as Screenshot;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Screenshot&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.image, _this.image) || other.image == _this.image));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,image);
+int get hashCode {
+  final _this = this as Screenshot;
+  return Object.hash(runtimeType,_this.id,_this.image);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Screenshot(id: $id, image: $image)';
+  final _this = this as Screenshot;
+  return 'Screenshot(id: ${_this.id}, image: ${_this.image})';
 }
 
 
@@ -382,7 +397,7 @@ class _$ScreenshotCopyWithImpl<$Res>
 /// Create a copy of Screenshot
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? image = null,}) {
-  return _then(_self.copyWith(
+  return _then(Screenshot(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String,
@@ -544,23 +559,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'Screenshot'))
     ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('image', image));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Screenshot&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Screenshot&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,image);
+int get hashCode {
+    return Object.hash(runtimeType,id,image);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Screenshot(id: $id, image: $image)';
+    return 'Screenshot(id: $id, image: $image)';
 }
 
 
