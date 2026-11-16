@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_clean_architecture_with_mvi/features/game_details/presentation/mvi_view/game_details_view_event.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
